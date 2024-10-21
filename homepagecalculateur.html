@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnostic Général</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('fondecranscalculateur.PNG');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+
+        .header {
+            background-color: rgba(44, 62, 80, 0.8); /* Semi-transparent background */
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Grille 2x2 */
+            grid-gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h2 {
+            color: #2c3e50;
+            font-size: 18px;
+        }
+
+        .card p {
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .card a {
+            display: inline-block;
+            background-color: #27ae60;
+            color: white;
+            padding: 10px 20px;
+            margin-top: 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .card a:hover {
+            background-color: #218c4f;
+        }
+
+        .footer {
+            background-color: rgba(44, 62, 80, 0.8);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Bienvenue sur le portail de diagnostic</h1>
+        <p>Choisissez l'un des calculateurs ci-dessous pour évaluer votre entreprise</p>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <h2>Calculateur ESG (Environnement, Social, Gouvernance)</h2>
+            <p>Évaluez la performance de votre entreprise en matière de critères ESG.</p>
+            <a href="ESG/homepageesg.html">Accéder au calculateur ESG</a>
+        </div>
+
+        <div class="card">
+            <h2>Calculateur Anti-Blanchiment</h2>
+            <p>Évaluez votre entreprise en fonction de sa capacité à gérer les risques de blanchiment de capitaux.</p>
+            <a href="AML/homepagequestionnaire.html">Accéder au calculateur Anti-Blanchiment</a>
+        </div>
+
+        <div class="card">
+            <h2>Calculateur d'Intégration et Maturité Digitale</h2>
+            <p>Diagnostiquez l'intégration numérique et la maturité digitale de votre entreprise.</p>
+            <a href="Digital/homepagescorecarddigitalisation.html">Accéder au calculateur de Maturité Digitale</a>
+        </div>
+
+        <div class="card">
+            <h2>Calculateur de Capacité d'Emprunt</h2>
+            <p>Analysez la solvabilité, la rentabilité, et la liquidité de votre entreprise pour évaluer sa capacité d'emprunt.</p>
+            <a href="Credit/homepagecredit.html">Accéder au calculateur de Capacité d'Emprunt</a>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Diagnostic Général</p>
+    </div>
+
+</body>
+</html>

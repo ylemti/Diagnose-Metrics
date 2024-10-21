@@ -4,6 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Questions sur l'Accès à une Énergie Propre et Abordable</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .question-card {
+            margin-bottom: 20px;
+        }
+        .result {
+            font-size: 20px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-top: 20px;
+        }
+    </style>
     <script>
         function calculateScore(event) {
             event.preventDefault();
@@ -11,71 +28,201 @@
             const form = document.forms["energyForm"];
             for (let i = 1; i <= 10; i++) {
                 const question = form["question" + i];
-                if (question.value === "1") {
+                if (question && question.value === "1") {
                     score++;
                 }
             }
-            localStorage.setItem("energie_propre_score", score);
-            window.location.href = "ESG.html";
+            // Enregistrer le score dans localStorage sous le bon nom pour l'ODD 7 (Énergie propre et abordable)
+            localStorage.setItem("score7", score);
+            
+            // Afficher le résultat sur la page
+            document.getElementById("result").textContent = "Votre score pour l'énergie propre et abordable est : " + score + "/10";
+
+            // Redirection automatique vers la page d'accueil après 2 secondes
+            setTimeout(function() {
+                window.location.href = "ESG.html";
+            }, 2000);
         }
     </script>
 </head>
 <body>
-    <h1>Accès à une Énergie Propre et Abordable - Questions</h1>
-    <form name="energyForm" onsubmit="calculateScore(event)">
-        <ol>
-            <li>
-                Utilisez-vous des ampoules LED à faible consommation d'énergie dans toutes les pièces de votre maison ?<br>
-                <input type="radio" name="question1" value="1"> Oui<br>
-                <input type="radio" name="question1" value="0"> Non
-            </li>
-            <li>
-                Faites-vous attention à débrancher vos appareils électroniques lorsque vous ne les utilisez pas, afin d'éviter la consommation d'énergie en veille ?<br>
-                <input type="radio" name="question2" value="1"> Oui<br>
-                <input type="radio" name="question2" value="0"> Non
-            </li>
-            <li>
-                Prenez-vous des douches courtes (moins de 5 minutes) pour économiser l'eau chaude et réduire votre consommation d'énergie ?<br>
-                <input type="radio" name="question3" value="1"> Oui<br>
-                <input type="radio" name="question3" value="0"> Non
-            </li>
-            <li>
-                Avez-vous installé un thermostat programmable pour mieux réguler la température chez vous et économiser de l'énergie ?<br>
-                <input type="radio" name="question4" value="1"> Oui<br>
-                <input type="radio" name="question4" value="0"> Non
-            </li>
-            <li>
-                Faites-vous sécher vos vêtements à l'air libre plutôt qu'en utilisant un sèche-linge électrique ?<br>
-                <input type="radio" name="question5" value="1"> Oui<br>
-                <input type="radio" name="question5" value="0"> Non
-            </li>
-            <li>
-                Utilisez-vous des rideaux ou des stores pour garder votre maison fraîche en été et réduire l'utilisation de la climatisation ?<br>
-                <input type="radio" name="question6" value="1"> Oui<br>
-                <input type="radio" name="question6" value="0"> Non
-            </li>
-            <li>
-                Avez-vous déjà envisagé de participer à un programme de production d'énergie solaire communautaire ?<br>
-                <input type="radio" name="question7" value="1"> Oui<br>
-                <input type="radio" name="question7" value="0"> Non
-            </li>
-            <li>
-                Faites-vous attention à chauffer uniquement les pièces que vous utilisez pour éviter de gaspiller de l'énergie ?<br>
-                <input type="radio" name="question8" value="1"> Oui<br>
-                <input type="radio" name="question8" value="0"> Non
-            </li>
-            <li>
-                Avez-vous opté pour un fournisseur d'énergie qui propose des options d'énergie renouvelable ?<br>
-                <input type="radio" name="question9" value="1"> Oui<br>
-                <input type="radio" name="question9" value="0"> Non
-            </li>
-            <li>
-                Lorsque vous cuisinez, couvrez-vous vos casseroles pour faire bouillir l'eau plus rapidement et économiser de l'énergie ?<br>
-                <input type="radio" name="question10" value="1"> Oui<br>
-                <input type="radio" name="question10" value="0"> Non
-            </li>
-        </ol>
-        <input type="submit" value="Calculer mon score">
-    </form>
+    <div class="container mt-5">
+        <h1 class="mb-4">Accès à une Énergie Propre et Abordable - Questionnaire</h1>
+        <p>Répondez aux questions suivantes pour évaluer votre engagement à utiliser une énergie propre et abordable et obtenir un score personnalisé.</p>
+
+        <form name="energyForm" onsubmit="calculateScore(event)">
+            <div class="row">
+                <!-- Question 1 -->
+                <div class="col-md-12 question-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">1. Utilisez-vous des ampoules LED à faible consommation d'énergie dans toutes les pièces de votre maison ?</h5>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question1" id="q1oui" value="1">
+                                <label class="form-check-label" for="q1oui">Oui</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question1" id="q1non" value="0">
+                                <label class="form-check-label" for="q1non">Non</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Question 2 -->
+                <div class="col-md-12 question-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">2. Faites-vous attention à débrancher vos appareils électroniques lorsque vous ne les utilisez pas, afin d'éviter la consommation d'énergie en veille ?</h5>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question2" id="q2oui" value="1">
+                                <label class="form-check-label" for="q2oui">Oui</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question2" id="q2non" value="0">
+                                <label class="form-check-label" for="q2non">Non</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Question 3 -->
+                <div class="col-md-12 question-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">3. Prenez-vous des douches courtes (moins de 5 minutes) pour économiser l'eau chaude et réduire votre consommation d'énergie ?</h5>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question3" id="q3oui" value="1">
+                                <label class="form-check-label" for="q3oui">Oui</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question3" id="q3non" value="0">
+                                <label class="form-check-label" for="q3non">Non</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Question 4 -->
+                <div class="col-md-12 question-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">4. Avez-vous installé un thermostat programmable pour mieux réguler la température chez vous et économiser de l'énergie ?</h5>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question4" id="q4oui" value="1">
+                                <label class="form-check-label" for="q4oui">Oui</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question4" id="q4non" value="0">
+                                <label class="form-check-label" for="q4non">Non</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Question 5 -->
+                <div class="col-md-12 question-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">5. Faites-vous sécher vos vêtements à l'air libre plutôt qu'en utilisant un sèche-linge électrique ?</h5>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question5" id="q5oui" value="1">
+                                <label class="form-check-label" for="q5oui">Oui</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question5" id="q5non" value="0">
+                                <label class="form-check-label" for="q5non">Non</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Question 6 -->
+                <div class="col-md-12 question-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">6. Utilisez-vous des rideaux ou des stores pour garder votre maison fraîche en été et réduire l'utilisation de la climatisation ?</h5>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question6" id="q6oui" value="1">
+                                <label class="form-check-label" for="q6oui">Oui</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question6" id="q6non" value="0">
+                                <label class="form-check-label" for="q6non">Non</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Question 7 -->
+                <div class="col-md-12 question-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">7. Avez-vous déjà envisagé de participer à un programme de production d'énergie solaire communautaire ?</h5>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question7" id="q7oui" value="1">
+                                <label class="form-check-label" for="q7oui">Oui</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question7" id="q7non" value="0">
+                                <label class="form-check-label" for="q7non">Non</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Question 8 -->
+                <div class="col-md-12 question-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">8. Faites-vous attention à chauffer uniquement les pièces que vous utilisez pour éviter de gaspiller de l'énergie ?</h5>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question8" id="q8oui" value="1">
+                                <label class="form-check-label" for="q8oui">Oui</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question8" id="q8non" value="0">
+                                <label class="form-check-label" for="q8non">Non</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Question 9 -->
+                <div class="col-md-12 question-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">9. Avez-vous opté pour un fournisseur d'énergie qui propose des options d'énergie renouvelable ?</h5>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question9" id="q9oui" value="1">
+                                <label class="form-check-label" for="q9oui">Oui</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question9" id="q9non" value="0">
+                                <label class="form-check-label" for="q9non">Non</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Question 10 -->
+                <div class="col-md-12 question-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">10. Lorsque vous cuisinez, couvrez-vous vos casseroles pour faire bouillir l'eau plus rapidement et économiser de l'énergie ?</h5>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question10" id="q10oui" value="1">
+                                <label class="form-check-label" for="q10oui">Oui</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question10" id="q10non" value="0">
+                                <label class="form-check-label" for="q10non">Non</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Bouton de soumission -->
+                <div class="col-md-12 mt-4">
+                    <input type="submit" class="btn btn-success" value="Calculer mon score">
+                </div>
+            </div>
+        </form>
+
+        <!-- Affichage du résultat -->
+        <div class="result" id="result"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

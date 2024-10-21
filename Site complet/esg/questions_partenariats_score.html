@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questions sur les Partenariats pour la Réalisation des Objectifs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .question-card {
+            margin-bottom: 20px;
+        }
+    </style>
+    <script>
+        function calculateScore(event) {
+            event.preventDefault();
+            let score = 0;
+            const form = document.forms["questionnaireForm"];
+            for (let i = 1; i <= 10; i++) {
+                const question = form["question" + i];
+                if (question && question.value === "1") {
+                    score++;
+                }
+            }
+            localStorage.setItem("partenariats_objectifs_score", score);
+            window.location.href = "ESG.html";
+        }
+    </script>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Partenariats pour la Réalisation des Objectifs - Questionnaire</h1>
+        <p>Répondez aux questions suivantes pour évaluer votre engagement envers les partenariats pour la réalisation des objectifs de développement durable, et obtenir un score personnalisé.</p>
+
+        <form id="questionnaireForm" onsubmit="calculateScore(event)">
+            <div class="row">
+                <!-- Question 1 -->
+                <div class="col-md-12 question-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">1. Avez-vous déjà participé à un projet communautaire en collaboration avec une organisation locale ?</h5>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question1" id="q1oui" value="1">
+                                <label class="form-check-label" for="q1oui">Oui</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question1" id="q1non" value="0">
+                                <label class="form-check-label" for="q1non">Non</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Question 2 -->
+                <div class="col-md-12 question-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">2. Contribuez-vous financièrement ou par des dons en nature à des associations qui œuvrent pour des causes locales ou globales ?</h5>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question2" id="q2oui" value="1">
+                                <label class="form-check-label" for="q2oui">Oui</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question2" id="q2non" value="0">
+                                <label class="form-check-label" for="q2non">Non</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Question 3 -->
+                <div class="col-md-12 question-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">3. Participez-vous à des initiatives qui rassemblent plusieurs acteurs (entreprises, ONG, gouvernements) pour atteindre des objectifs communs ?</h5>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question3" id="q3oui" value="1">
+                                <label class="form-check-label" for="q3oui">Oui</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question3" id="q3non" value="0">
+                                <label class="form-check-label" for="q3non">Non</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Question 4 -->
+                <div class="col-md-12 question-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">4. Avez-vous déjà collaboré avec des entreprises ou des organisations pour soutenir des projets de développement durable ?</h5>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question4" id="q4oui" value="1">
+                                <label class="form-check-label" for="q4oui">Oui</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question4" id="q4non" value="0">
+                                <label class="form-check-label" for="q4non">Non</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Question 5 -->
+                <div class="col-md-12 question-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">5. Faites-vous partie d'un groupe ou d'une association qui vise à améliorer votre communauté locale ?</h5>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question5" id="q5oui" value="1">
+                                <label class="form-check-label" for="q5oui">Oui</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question5" id="q5non" value="0">
+                                <label class="form-check-label" for="q5non">Non</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Question 6 -->
+                <div class="col-md-12 question-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">6. Soutenez-vous des projets qui encouragent la coopération internationale pour résoudre des problèmes mondiaux (comme la pauvreté, la santé, l'éducation) ?</h5>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question6" id="q6oui" value="1">
+                                <label class="form-check-label" for="q6oui">Oui</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question6" id="q6non" value="0">
+                                <label class="form-check-label" for="q6non">Non</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Question 7 -->
+                <div class="col-md-12 question-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">7. Participez-vous à des événements qui visent à sensibiliser aux Objectifs de Développement Durable ?</h5>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question7" id="q7oui" value="1">
+                                <label class="form-check-label" for="q7oui">Oui</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question7" id="q7non" value="0">
+                                <label class="form-check-label" for="q7non">Non</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Question 8 -->
+                <div class="col-md-12 question-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">8. Travaillez-vous avec vos voisins ou des groupes locaux pour améliorer la résilience de votre communauté face aux changements climatiques ?</h5>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question8" id="q8oui" value="1">
+                                <label class="form-check-label" for="q8oui">Oui</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question8" id="q8non" value="0">
+                                <label class="form-check-label" for="q8non">Non</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Question 9 -->
+                <div class="col-md-12 question-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">9. Soutenez-vous des initiatives éducatives qui visent à enseigner les Objectifs de Développement Durable aux jeunes ?</h5>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question9" id="q9oui" value="1">
+                                <label class="form-check-label" for="q9oui">Oui</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question9" id="q9non" value="0">
+                                <label class="form-check-label" for="q9non">Non</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Question 10 -->
+                <div class="col-md-12 question-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">10. Pensez-vous que des partenariats entre différents secteurs (public, privé, communautaire) sont essentiels pour résoudre les problèmes mondiaux ?</h5>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question10" id="q10oui" value="1">
+                                <label class="form-check-label" for="q10oui">Oui</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question10" id="q10non" value="0">
+                                <label class="form-check-label" for="q10non">Non</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Bouton de soumission -->
+                <div class="col-md-12 mt-4">
+                    <button type="submit" class="btn btn-success">Soumettre les réponses</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

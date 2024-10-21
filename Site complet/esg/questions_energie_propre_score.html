@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questions sur l'Accès à une Énergie Propre et Abordable</title>
+    <script>
+        function calculateScore(event) {
+            event.preventDefault();
+            let score = 0;
+            const form = document.forms["energyForm"];
+            for (let i = 1; i <= 10; i++) {
+                const question = form["question" + i];
+                if (question.value === "1") {
+                    score++;
+                }
+            }
+            localStorage.setItem("energie_propre_score", score);
+            window.location.href = "ESG.html";
+        }
+    </script>
+</head>
+<body>
+    <h1>Accès à une Énergie Propre et Abordable - Questions</h1>
+    <form name="energyForm" onsubmit="calculateScore(event)">
+        <ol>
+            <li>
+                Utilisez-vous des ampoules LED à faible consommation d'énergie dans toutes les pièces de votre maison ?<br>
+                <input type="radio" name="question1" value="1"> Oui<br>
+                <input type="radio" name="question1" value="0"> Non
+            </li>
+            <li>
+                Faites-vous attention à débrancher vos appareils électroniques lorsque vous ne les utilisez pas, afin d'éviter la consommation d'énergie en veille ?<br>
+                <input type="radio" name="question2" value="1"> Oui<br>
+                <input type="radio" name="question2" value="0"> Non
+            </li>
+            <li>
+                Prenez-vous des douches courtes (moins de 5 minutes) pour économiser l'eau chaude et réduire votre consommation d'énergie ?<br>
+                <input type="radio" name="question3" value="1"> Oui<br>
+                <input type="radio" name="question3" value="0"> Non
+            </li>
+            <li>
+                Avez-vous installé un thermostat programmable pour mieux réguler la température chez vous et économiser de l'énergie ?<br>
+                <input type="radio" name="question4" value="1"> Oui<br>
+                <input type="radio" name="question4" value="0"> Non
+            </li>
+            <li>
+                Faites-vous sécher vos vêtements à l'air libre plutôt qu'en utilisant un sèche-linge électrique ?<br>
+                <input type="radio" name="question5" value="1"> Oui<br>
+                <input type="radio" name="question5" value="0"> Non
+            </li>
+            <li>
+                Utilisez-vous des rideaux ou des stores pour garder votre maison fraîche en été et réduire l'utilisation de la climatisation ?<br>
+                <input type="radio" name="question6" value="1"> Oui<br>
+                <input type="radio" name="question6" value="0"> Non
+            </li>
+            <li>
+                Avez-vous déjà envisagé de participer à un programme de production d'énergie solaire communautaire ?<br>
+                <input type="radio" name="question7" value="1"> Oui<br>
+                <input type="radio" name="question7" value="0"> Non
+            </li>
+            <li>
+                Faites-vous attention à chauffer uniquement les pièces que vous utilisez pour éviter de gaspiller de l'énergie ?<br>
+                <input type="radio" name="question8" value="1"> Oui<br>
+                <input type="radio" name="question8" value="0"> Non
+            </li>
+            <li>
+                Avez-vous opté pour un fournisseur d'énergie qui propose des options d'énergie renouvelable ?<br>
+                <input type="radio" name="question9" value="1"> Oui<br>
+                <input type="radio" name="question9" value="0"> Non
+            </li>
+            <li>
+                Lorsque vous cuisinez, couvrez-vous vos casseroles pour faire bouillir l'eau plus rapidement et économiser de l'énergie ?<br>
+                <input type="radio" name="question10" value="1"> Oui<br>
+                <input type="radio" name="question10" value="0"> Non
+            </li>
+        </ol>
+        <input type="submit" value="Calculer mon score">
+    </form>
+</body>
+</html>

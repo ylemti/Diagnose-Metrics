@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questions - Travail décent et croissance économique</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .question-card {
+            margin-bottom: 20px;
+        }
+    </style>
+    <script>
+        function calculateScore(event) {
+            event.preventDefault();
+            let score = 0;
+            const form = document.forms["questionnaireForm"];
+            for (let i = 1; i <= 10; i++) {
+                const question = form["question" + i];
+                if (question.value === "1") {
+                    score++;
+                }
+            }
+            localStorage.setItem("travail_croissance_score", score);
+            window.location.href = "ESG.html";
+        }
+    </script>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Travail décent et croissance économique - Questionnaire</h1>
+        <p>Répondez aux questions suivantes pour évaluer votre engagement envers le travail décent et la croissance économique et obtenir un score personnalisé.</p>
+
+        <form id="questionnaireForm" onsubmit="calculateScore(event)">
+            <div class="row">
+                <!-- Question 1 -->
+                <div class="col-md-12 question-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">1. Connaissez-vous vos droits en tant que travailleur, y compris le salaire minimum et les conditions de travail ?</h5>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question1" id="q1oui" value="1">
+                                <label class="form-check-label" for="q1oui">Oui</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question1" id="q1non" value="0">
+                                <label class="form-check-label" for="q1non">Non</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Question 2 -->
+                <div class="col-md-12 question-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">2. Soutenez-vous des initiatives pour améliorer les conditions de travail et garantir des salaires équitables ?</h5>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question2" id="q2oui" value="1">
+                                <label class="form-check-label" for="q2oui">Oui</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question2" id="q2non" value="0">
+                                <label class="form-check-label" for="q2non">Non</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Question 3 -->
+                <div class="col-md-12 question-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">3. Pensez-vous que chaque travailleur a droit à un emploi décent et à des opportunités de développement professionnel ?</h5>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question3" id="q3oui" value="1">
+                                <label class="form-check-label" for="q3oui">Oui</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question3" id="q3non" value="0">
+                                <label class="form-check-label" for="q3non">Non</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Question 4 -->
+                <div class="col-md-12 question-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">4. Soutenez-vous des politiques visant à réduire le chômage, en particulier chez les jeunes et les personnes vulnérables ?</h5>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question4" id="q4oui" value="1">
+                                <label class="form-check-label" for="q4oui">Oui</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question4" id="q4non" value="0">
+                                <label class="form-check-label" for="q4non">Non</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Question 5 -->
+                <div class="col-md-12 question-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">5. Participez-vous à des programmes ou initiatives de formation professionnelle pour améliorer vos compétences ?</h5>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question5" id="q5oui" value="1">
+                                <label class="form-check-label" for="q5oui">Oui</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question5" id="q5non" value="0">
+                                <label class="form-check-label" for="q5non">Non</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Question 6 -->
+                <div class="col-md-12 question-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">6. Soutenez-vous des initiatives pour promouvoir l'entrepreneuriat et la création de petites entreprises ?</h5>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question6" id="q6oui" value="1">
+                                <label class="form-check-label" for="q6oui">Oui</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question6" id="q6non" value="0">
+                                <label class="form-check-label" for="q6non">Non</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Question 7 -->
+                <div class="col-md-12 question-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">7. Estimez-vous qu'il est important de réduire les écarts de revenus entre les différents secteurs de l'économie ?</h5>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question7" id="q7oui" value="1">
+                                <label class="form-check-label" for="q7oui">Oui</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question7" id="q7non" value="0">
+                                <label class="form-check-label" for="q7non">Non</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Question 8 -->
+                <div class="col-md-12 question-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">8. Soutenez-vous des initiatives pour garantir l'égalité des chances sur le marché du travail, indépendamment du genre ou de l'origine ?</h5>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question8" id="q8oui" value="1">
+                                <label class="form-check-label" for="q8oui">Oui</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question8" id="q8non" value="0">
+                                <label class="form-check-label" for="q8non">Non</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Question 9 -->
+                <div class="col-md-12 question-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">9. Contribuez-vous à des projets visant à améliorer la productivité et la durabilité dans votre secteur d'activité ?</h5>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question9" id="q9oui" value="1">
+                                <label class="form-check-label" for="q9oui">Oui</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question9" id="q9non" value="0">
+                                <label class="form-check-label" for="q9non">Non</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Question 10 -->
+                <div class="col-md-12 question-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">10. Soutenez-vous des efforts visant à réduire le travail précaire et à promouvoir des contrats de travail stables ?</h5>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question10" id="q10oui" value="1">
+                                <label class="form-check-label" for="q10oui">Oui</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question10" id="q10non" value="0">
+                                <label class="form-check-label" for="q10non">Non</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Bouton de soumission -->
+                <div class="col-md-12 mt-4">
+                    <input type="submit" class="btn btn-success" value="Calculer mon score">
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

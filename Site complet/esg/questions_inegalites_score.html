@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questions sur les Inégalités Réduites</title>
+    <script>
+        function calculateScore(event) {
+            event.preventDefault();
+            let score = 0;
+            const form = document.forms["inequalityForm"];
+            for (let i = 1; i <= 10; i++) {
+                const question = form["question" + i];
+                if (question.value === "1") {
+                    score++;
+                }
+            }
+            localStorage.setItem("inegalites_reduites_score", score);
+            window.location.href = "ESG.html";
+        }
+    </script>
+</head>
+<body>
+    <h1>Inégalités Réduites - Questions</h1>
+    <form name="inequalityForm" onsubmit="calculateScore(event)">
+        <ol>
+            <li>
+                Participez-vous à des initiatives locales visant à soutenir les personnes issues de milieux défavorisés ?<br>
+                <input type="radio" name="question1" value="1"> Oui<br>
+                <input type="radio" name="question1" value="0"> Non
+            </li>
+            <li>
+                Soutenez-vous des associations ou organisations qui travaillent pour l'égalité des chances ?<br>
+                <input type="radio" name="question2" value="1"> Oui<br>
+                <input type="radio" name="question2" value="0"> Non
+            </li>
+            <li>
+                Faites-vous des efforts pour utiliser un langage inclusif et respectueux dans votre vie quotidienne ?<br>
+                <input type="radio" name="question3" value="1"> Oui<br>
+                <input type="radio" name="question3" value="0"> Non
+            </li>
+            <li>
+                Achetez-vous auprès d'entreprises ou de coopératives qui soutiennent des groupes marginalisés ?<br>
+                <input type="radio" name="question4" value="1"> Oui<br>
+                <input type="radio" name="question4" value="0"> Non
+            </li>
+            <li>
+                Participez-vous à des campagnes de sensibilisation pour lutter contre la discrimination ?<br>
+                <input type="radio" name="question5" value="1"> Oui<br>
+                <input type="radio" name="question5" value="0"> Non
+            </li>
+            <li>
+                Soutenez-vous des politiques ou des initiatives qui visent à réduire les inégalités de revenus ?<br>
+                <input type="radio" name="question6" value="1"> Oui<br>
+                <input type="radio" name="question6" value="0"> Non
+            </li>
+            <li>
+                Faites-vous attention à inclure toutes les voix lors de discussions ou de prises de décision en groupe ?<br>
+                <input type="radio" name="question7" value="1"> Oui<br>
+                <input type="radio" name="question7" value="0"> Non
+            </li>
+            <li>
+                Privilégiez-vous des produits issus du commerce équitable pour soutenir les petits producteurs ?<br>
+                <input type="radio" name="question8" value="1"> Oui<br>
+                <input type="radio" name="question8" value="0"> Non
+            </li>
+            <li>
+                Faites-vous du bénévolat pour des associations qui aident les personnes handicapées ou marginalisées ?<br>
+                <input type="radio" name="question9" value="1"> Oui<br>
+                <input type="radio" name="question9" value="0"> Non
+            </li>
+            <li>
+                Encouragez-vous votre entourage à être plus inclusif et solidaire ?<br>
+                <input type="radio" name="question10" value="1"> Oui<br>
+                <input type="radio" name="question10" value="0"> Non
+            </li>
+        </ol>
+        <input type="submit" value="Calculer mon score">
+    </form>
+</body>
+</html>

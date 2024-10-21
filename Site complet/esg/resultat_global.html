@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Score Global des ODD</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Votre Score Global</h1>
+        <p>Votre score global sur les Objectifs de Développement Durable est :</p>
+        <h2 id="scoreGlobal"></h2>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let totalScore = 0;
+            const objectifs = [
+                "pas_de_pauvrete_score", "faim_zero_score", "sante_bienetre_score",
+                "education_qualite_score", "egalite_sexes_score", "eau_propre_assainissement_score",
+                "energie_propre_score", "travail_croissance_score", "innovation_infrastructure_score",
+                "inegalites_reduites_score", "villes_communautes_durables_score",
+                "consommation_responsable_score", "changement_climatique_score",
+                "vie_aquatique_score", "vie_terrestre_score", "paix_justice_score",
+                "partenariats_objectifs_score"
+            ];
+
+            objectifs.forEach(objKey => {
+                const score = localStorage.getItem(objKey);
+                if (score !== null) {
+                    totalScore += parseInt(score);
+                }
+            });
+
+            document.getElementById("scoreGlobal").textContent = `${totalScore} / 170`;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Évaluation des 17 Objectifs de Développement Durable</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        .scorecard {
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .scorecard h2 {
+            color: #2c3e50;
+            font-size: 16px;
+        }
+
+        .scorecard p {
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn-calculate {
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .btn-home {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            display: none; /* Cacher le bouton jusqu'au calcul du score */
+        }
+
+        .result {
+            font-size: 16px;
+            color: #2c3e50;
+            font-weight: bold;
+            margin-top: 20px;
+            font-family: 'Georgia', serif;
+        }
+
+        .footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        #myChart {
+            max-width: 800px;
+            margin: 30px auto;
+        }
+
+        .conclusion {
+            font-size: 14px;
+            font-style: italic;
+            line-height: 1.6;
+            color: #2c3e50;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #27ae60;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Évaluation des 17 Objectifs de Développement Durable</h1>
+        <p>Analyse des différents objectifs et calcul de votre score global</p>
+    </div>
+
+    <div class="container">
+        <!-- Intégration des 17 objectifs de développement durable -->
+        <div class="scorecard">
+            <h2>1. Pas de pauvreté</h2>
+            <p>Résultat : <strong id="score1">Calcul en cours...</strong></p>
+            <a href="questions_pauvrete.html" class="btn btn-primary">Accéder à l'évaluation</a>
+        </div>
+        <div class="scorecard">
+            <h2>2. Faim zéro</h2>
+            <p>Résultat : <strong id="score2">Calcul en cours...</strong></p>
+            <a href="questions_faim.html" class="btn btn-primary">Accéder à l'évaluation</a>
+        </div>
+        <div class="scorecard">
+            <h2>3. Bonne santé et bien-être</h2>
+            <p>Résultat : <strong id="score3">Calcul en cours...</strong></p>
+            <a href="questions_sante.html" class="btn btn-primary">Accéder à l'évaluation</a>
+        </div>
+        <div class="scorecard">
+            <h2>4. Éducation de qualité</h2>
+            <p>Résultat : <strong id="score4">Calcul en cours...</strong></p>
+            <a href="questions_education.html" class="btn btn-primary">Accéder à l'évaluation</a>
+        </div>
+        <div class="scorecard">
+            <h2>5. Égalité entre les sexes</h2>
+            <p>Résultat : <strong id="score5">Calcul en cours...</strong></p>
+            <a href="questions_egalite.html" class="btn btn-primary">Accéder à l'évaluation</a>
+        </div>
+        <div class="scorecard">
+            <h2>6. Eau propre et assainissement</h2>
+            <p>Résultat : <strong id="score6">Calcul en cours...</strong></p>
+            <a href="questions_eau.html" class="btn btn-primary">Accéder à l'évaluation</a>
+        </div>
+        <div class="scorecard">
+            <h2>7. Énergie propre et d'un coût abordable</h2>
+            <p>Résultat : <strong id="score7">Calcul en cours...</strong></p>
+            <a href="questions_energie.html" class="btn btn-primary">Accéder à l'évaluation</a>
+        </div>
+        <div class="scorecard">
+            <h2>8. Travail décent et croissance économique</h2>
+            <p>Résultat : <strong id="score8">Calcul en cours...</strong></p>
+            <a href="questions_travail.html" class="btn btn-primary">Accéder à l'évaluation</a>
+        </div>
+        <div class="scorecard">
+            <h2>9. Industrie, innovation et infrastructure</h2>
+            <p>Résultat : <strong id="score9">Calcul en cours...</strong></p>
+            <a href="questions_innovation.html" class="btn btn-primary">Accéder à l'évaluation</a>
+        </div>
+        <div class="scorecard">
+            <h2>10. Réduction des inégalités</h2>
+            <p>Résultat : <strong id="score10">Calcul en cours...</strong></p>
+            <a href="questions_inegalites.html" class="btn btn-primary">Accéder à l'évaluation</a>
+        </div>
+        <div class="scorecard">
+            <h2>11. Villes et communautés durables</h2>
+            <p>Résultat : <strong id="score11">Calcul en cours...</strong></p>
+            <a href="questions_villes.html" class="btn btn-primary">Accéder à l'évaluation</a>
+        </div>
+        <div class="scorecard">
+            <h2>12. Consommation et production responsables</h2>
+            <p>Résultat : <strong id="score12">Calcul en cours...</strong></p>
+            <a href="questions_consommation.html" class="btn btn-primary">Accéder à l'évaluation</a>
+        </div>
+        <div class="scorecard">
+            <h2>13. Lutte contre le changement climatique</h2>
+            <p>Résultat : <strong id="score13">Calcul en cours...</strong></p>
+            <a href="questions_climat.html" class="btn btn-primary">Accéder à l'évaluation</a>
+        </div>
+        <div class="scorecard">
+            <h2>14. Vie aquatique</h2>
+            <p>Résultat : <strong id="score14">Calcul en cours...</strong></p>
+            <a href="questions_aquatique.html" class="btn btn-primary">Accéder à l'évaluation</a>
+        </div>
+        <div class="scorecard">
+            <h2>15. Vie terrestre</h2>
+            <p>Résultat : <strong id="score15">Calcul en cours...</strong></p>
+            <a href="questions_terrestre.html" class="btn btn-primary">Accéder à l'évaluation</a>
+        </div>
+        <div class="scorecard">
+            <h2>16. Paix, justice et institutions efficaces</h2>
+            <p>Résultat : <strong id="score16">Calcul en cours...</strong></p>
+            <a href="questions_paix.html" class="btn btn-primary">Accéder à l'évaluation</a>
+        </div>
+        <div class="scorecard">
+            <h2>17. Partenariats pour la réalisation des objectifs</h2>
+            <p>Résultat : <strong id="score17">Calcul en cours...</strong></p>
+            <a href="questions_partenariats.html" class="btn btn-primary">Accéder à l'évaluation</a>
+        </div>
+    </div>
+
+    <!-- Bouton pour calculer le score global -->
+    <div class="btn-container">
+        <button class="btn-calculate" onclick="calculateTotal()">Calculer le score global</button>
+        <div class="result" id="totalResult"></div>
+    </div>
+
+    <!-- Affichage du graphique radar -->
+    <div id="myChartContainer">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <!-- Zone de conclusion -->
+    <div class="conclusion" id="conclusionText"></div>
+
+    <!-- Bouton de retour à l'accueil -->
+    <div class="btn-container">
+        <button class="btn-home" id="btnHome" onclick="goHome()">Revenir à l'accueil</button>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Évaluation des Objectifs de Développement Durable</p>
+    </div>
+
+    <script>
+        // Fonction pour récupérer les scores et les afficher
+        function loadScores() {
+            for (let i = 1; i <= 17; i++) {
+                document.getElementById("score" + i).textContent = (localStorage.getItem("score" + i) || "Pas encore calculé") + "/10";
+            }
+        }
+
+        // Fonction pour calculer le score global et afficher le graphique
+        function calculateTotal() {
+            let totalScore = 0;
+            const scores = [];
+            for (let i = 1; i <= 17; i++) {
+                const score = parseFloat(localStorage.getItem("score" + i)) || 0;
+                totalScore += score;
+                scores.push(score);
+            }
+            document.getElementById("totalResult").textContent = "Votre score global est de : " + totalScore + " / 170";
+
+            // Génération du graphique radar
+            const ctx = document.getElementById('myChart').getContext('2d');
+            const myChart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['Pauvreté', 'Faim', 'Santé', 'Éducation', 'Égalité', 'Eau', 'Énergie', 'Travail', 'Innovation', 'Inégalités', 'Villes', 'Consommation', 'Climat', 'Vie aquatique', 'Vie terrestre', 'Paix', 'Partenariats'],
+                    datasets: [{
+                        data: scores,
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    scales: {
+                        r: {
+                            suggestedMin: 0,
+                            suggestedMax: 10
+                        }
+                    },
+                    responsive: true
+                }
+            });
+
+            // Afficher le bouton de retour à l'accueil
+            document.getElementById('btnHome').style.display = 'block';
+        }
+
+        // Fonction pour retourner à la page d'accueil
+        function goHome() {
+            window.location.href = '../homepagecalculateur.html'; // Redirection vers la page d'accueil
+        }
+
+        // Charger les scores lors du chargement de la page
+        window.onload = loadScores;
+    </script>
+
+</body>
+</html>

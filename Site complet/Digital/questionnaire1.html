@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intégration des systèmes numériques</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #2c3e50;
+        }
+
+        label {
+            font-size: 16px;
+            display: block;
+            margin: 10px 0;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .submit-btn {
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover {
+            background-color: #218c4f;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #27ae60;
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Évaluation - Intégration des systèmes numériques</h1>
+        <p>Répondez aux questions pour évaluer votre niveau d'intégration des systèmes numériques.</p>
+    </div>
+
+    <div class="container">
+        <form id="scoreForm">
+            <!-- Question 1 -->
+            <label>1. Utilisez-vous des outils automatisés pour la gestion des opérations internes ?</label>
+            <input type="radio" name="q1" value="3"> Oui, pour la plupart des opérations <br>
+            <input type="radio" name="q1" value="2"> Oui, mais pour certaines opérations seulement <br>
+            <input type="radio" name="q1" value="1"> Non <br>
+
+            <!-- Question 2 -->
+            <label>2. Vos systèmes de gestion sont-ils basés sur le cloud ?</label>
+            <input type="radio" name="q2" value="3"> Oui, entièrement <br>
+            <input type="radio" name="q2" value="2"> Oui, partiellement <br>
+            <input type="radio" name="q2" value="1"> Non <br>
+
+            <!-- Question 3 -->
+            <label>3. Les différents services de votre entreprise (ex : ventes, marketing) utilisent-ils un système intégré ?</label>
+            <input type="radio" name="q3" value="3"> Oui, ils sont tous interconnectés <br>
+            <input type="radio" name="q3" value="2"> Oui, mais avec quelques exceptions <br>
+            <input type="radio" name="q3" value="1"> Non, les services sont cloisonnés <br>
+
+            <!-- Question 4 -->
+            <label>4. Utilisez-vous des outils de Business Intelligence pour analyser les données internes ?</label>
+            <input type="radio" name="q4" value="3"> Oui, régulièrement <br>
+            <input type="radio" name="q4" value="2"> Oui, mais rarement <br>
+            <input type="radio" name="q4" value="1"> Non <br>
+
+            <!-- Question 5 -->
+            <label>5. Avez-vous automatisé la majorité des processus répétitifs ?</label>
+            <input type="radio" name="q5" value="3"> Oui, la majorité des processus <br>
+            <input type="radio" name="q5" value="2"> Oui, mais seulement certains processus <br>
+            <input type="radio" name="q5" value="1"> Non <br>
+
+            <!-- Submit button -->
+            <div class="btn-container">
+                <button type="button" class="submit-btn" onclick="calculateScore()">Calculer le score</button>
+            </div>
+
+            <!-- Result -->
+            <div class="result" id="result"></div>
+        </form>
+    </div>
+
+    <script>
+        function calculateScore() {
+            var totalScore = 0;
+            var form = document.forms['scoreForm'];
+
+            // Additionner les scores de chaque question
+            for (var i = 1; i <= 5; i++) {
+                var question = form['q' + i];
+                for (var j = 0; j < question.length; j++) {
+                    if (question[j].checked) {
+                        totalScore += parseInt(question[j].value);
+                    }
+                }
+            }
+
+            // Afficher le résultat
+            var scoreOutOfTen = (totalScore / 15) * 10;
+            document.getElementById('result').innerHTML = 'Votre score est de : ' + scoreOutOfTen.toFixed(1) + ' / 10';
+
+            // Stocker le score dans localStorage
+            localStorage.setItem("score1", scoreOutOfTen.toFixed(1));
+
+            // Redirection vers la page d'accueil après 2 secondes
+            setTimeout(function() {
+                window.location.href = 'homepagescorecarddigitalisation.html';
+            }, 2000);
+        }
+    </script>
+
+</body>
+</html>

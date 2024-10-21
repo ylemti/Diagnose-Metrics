@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scorecard 6 - Systèmes et technologie</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #2c3e50;
+        }
+
+        label {
+            font-size: 16px;
+            display: block;
+            margin: 10px 0;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .submit-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #27ae60;
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Scorecard 6 - Systèmes et technologie</h1>
+        <p>Veuillez répondre aux questions ci-dessous pour évaluer l'efficacité de vos systèmes et technologies en matière de LAB.</p>
+    </div>
+
+    <div class="container">
+        <form id="scoreForm">
+            <!-- Question 1 -->
+            <label>1. Utilisez-vous des systèmes informatiques pour surveiller les transactions et les activités suspectes ?</label>
+            <input type="radio" name="q1" value="3"> Oui, des systèmes avancés <br>
+            <input type="radio" name="q1" value="2"> Oui, des outils basiques <br>
+            <input type="radio" name="q1" value="1"> Non <br>
+
+            <!-- Question 2 -->
+            <label>2. Disposez-vous de systèmes automatisés pour identifier les transactions dépassant des seuils prédéfinis ?</label>
+            <input type="radio" name="q2" value="3"> Oui, pour toutes les transactions <br>
+            <input type="radio" name="q2" value="2"> Oui, mais seulement pour certaines transactions <br>
+            <input type="radio" name="q2" value="1"> Non <br>
+
+            <!-- Question 3 -->
+            <label>3. Votre système permet-il de filtrer les clients et transactions par rapport aux listes de sanctions et PPE ?</label>
+            <input type="radio" name="q3" value="3"> Oui, systématiquement <br>
+            <input type="radio" name="q3" value="2"> Oui, mais de manière irrégulière <br>
+            <input type="radio" name="q3" value="1"> Non <br>
+
+            <!-- Question 4 -->
+            <label>4. Vos systèmes sont-ils mis à jour régulièrement pour intégrer les nouvelles exigences réglementaires en matière de LAB ?</label>
+            <input type="radio" name="q4" value="3"> Oui, proactivement <br>
+            <input type="radio" name="q4" value="2"> Oui, mais avec retard <br>
+            <input type="radio" name="q4" value="1"> Non <br>
+
+            <!-- Question 5 -->
+            <label>5. Avez-vous un système de gestion de la conformité qui intègre des rapports automatisés ?</label>
+            <input type="radio" name="q5" value="3"> Oui, totalement automatisé <br>
+            <input type="radio" name="q5" value="2"> Oui, mais partiellement automatisé <br>
+            <input type="radio" name="q5" value="1"> Non <br>
+
+            <!-- Question 6 -->
+            <label>6. Utilisez-vous des outils de détection d’anomalies pour surveiller les comportements atypiques dans les transactions ?</label>
+            <input type="radio" name="q6" value="3"> Oui, un système dédié <br>
+            <input type="radio" name="q6" value="2"> Oui, mais sans outil spécifique <br>
+            <input type="radio" name="q6" value="1"> Non <br>
+
+            <!-- Question 7 -->
+            <label>7. Vos systèmes informatiques sont-ils protégés contre les cyberattaques et les violations de données ?</label>
+            <input type="radio" name="q7" value="3"> Oui, des protocoles stricts sont en place <br>
+            <input type="radio" name="q7" value="2"> Oui, mais les protocoles sont limités <br>
+            <input type="radio" name="q7" value="1"> Non <br>
+
+            <!-- Question 8 -->
+            <label>8. Avez-vous des outils de reporting automatisés pour signaler des activités suspectes aux autorités compétentes ?</label>
+            <input type="radio" name="q8" value="3"> Oui, totalement automatisé <br>
+            <input type="radio" name="q8" value="2"> Oui, mais partiellement automatisé <br>
+            <input type="radio" name="q8" value="1"> Non <br>
+
+            <!-- Question 9 -->
+            <label>9. Votre système permet-il d’effectuer des analyses en temps réel des transactions pour détecter les risques de blanchiment d'argent ?</label>
+            <input type="radio" name="q9" value="3"> Oui, avec des alertes en temps réel <br>
+            <input type="radio" name="q9" value="2"> Oui, mais les analyses ne sont pas en temps réel <br>
+            <input type="radio" name="q9" value="1"> Non <br>
+
+            <!-- Question 10 -->
+            <label>10. Vos systèmes permettent-ils une réévaluation continue des clients en fonction des risques identifiés au fil du temps ?</label>
+            <input type="radio" name="q10" value="3"> Oui, régulièrement <br>
+            <input type="radio" name="q10" value="2"> Oui, mais rarement <br>
+            <input type="radio" name="q10" value="1"> Non <br>
+
+            <!-- Submit button -->
+            <div class="btn-container">
+                <button type="button" class="submit-btn" onclick="calculateScore()">Calculer le score</button>
+            </div>
+
+            <!-- Result -->
+            <div class="result" id="result"></div>
+        </form>
+    </div>
+
+    <script>
+        function calculateScore() {
+            var totalScore = 0;
+            var form = document.forms['scoreForm'];
+
+            // Add up the score for each question
+            for (var i = 1; i <= 10; i++) {
+                var question = form['q' + i];
+                for (var j = 0; j < question.length; j++) {
+                    if (question[j].checked) {
+                        totalScore += parseInt(question[j].value);
+                    }
+                }
+            }
+
+            // Display the result
+            var scoreOutOfTen = (totalScore / 30) * 10;
+            document.getElementById('result').innerHTML = 'Votre score est de : ' + totalScore + ' / 30';
+
+            // Store the score in localStorage (normalized on a scale of 10)
+            localStorage.setItem("score6", scoreOutOfTen.toFixed(1));
+
+            // Redirect to homepage after calculating the score
+            setTimeout(function() {
+                window.location.href = 'homepagequestionnaire.html';
+            }, 2000); // 2-second delay before redirecting
+        }
+    </script>
+
+</body>
+</html>

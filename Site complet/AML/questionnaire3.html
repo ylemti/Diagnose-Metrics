@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scorecard 3 - Nature des fonds engagés</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #2c3e50;
+        }
+
+        label {
+            font-size: 16px;
+            display: block;
+            margin: 10px 0;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .submit-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #27ae60;
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Scorecard 3 - Nature des fonds engagés</h1>
+        <p>Veuillez répondre aux questions ci-dessous pour évaluer le risque lié aux fonds engagés par vos clients.</p>
+    </div>
+
+    <div class="container">
+        <form id="scoreForm">
+            <!-- Question 1 -->
+            <label>1. Quel pourcentage de vos clients déclare la source de leurs fonds lors de l’intégration ?</label>
+            <input type="radio" name="q1" value="3"> 100% <br>
+            <input type="radio" name="q1" value="2"> Entre 50% et 99% <br>
+            <input type="radio" name="q1" value="1"> Moins de 50% <br>
+
+            <!-- Question 2 -->
+            <label>2. Quels types de fonds vos clients engagent-ils principalement ?</label>
+            <input type="radio" name="q2" value="2"> Virements bancaires <br>
+            <input type="radio" name="q2" value="1"> Actifs numériques (cryptomonnaies) <br>
+            <input type="radio" name="q2" value="3"> Espèces <br>
+
+            <!-- Question 3 -->
+            <label>3. Avez-vous un processus pour vérifier l’origine des fonds utilisés dans les transactions financières de vos clients ?</label>
+            <input type="radio" name="q3" value="3"> Oui, pour toutes les transactions <br>
+            <input type="radio" name="q3" value="2"> Oui, mais seulement pour les transactions suspectes <br>
+            <input type="radio" name="q3" value="1"> Non <br>
+
+            <!-- Question 4 -->
+            <label>4. Quel pourcentage des transactions effectuées par vos clients dépasse un certain seuil préétabli ?</label>
+            <input type="radio" name="q4" value="1"> Moins de 10% <br>
+            <input type="radio" name="q4" value="2"> Entre 10% et 30% <br>
+            <input type="radio" name="q4" value="3"> Plus de 30% <br>
+
+            <!-- Question 5 -->
+            <label>5. Utilisez-vous des outils automatisés pour surveiller les transactions financières importantes ou inhabituelles ?</label>
+            <input type="radio" name="q5" value="3"> Oui <br>
+            <input type="radio" name="q5" value="1"> Non <br>
+
+            <!-- Question 6 -->
+            <label>6. Vos clients engagent-ils fréquemment des fonds provenant de pays classés à haut risque ?</label>
+            <input type="radio" name="q6" value="1"> Non <br>
+            <input type="radio" name="q6" value="2"> Oui, occasionnellement <br>
+            <input type="radio" name="q6" value="3"> Oui, fréquemment <br>
+
+            <!-- Question 7 -->
+            <label>7. Avez-vous identifié des transactions impliquant des fonds provenant d'activités illégales ou non déclarées ?</label>
+            <input type="radio" name="q7" value="1"> Non <br>
+            <input type="radio" name="q7" value="2"> Oui, mais rarement <br>
+            <input type="radio" name="q7" value="3"> Oui, souvent <br>
+
+            <!-- Question 8 -->
+            <label>8. Quel pourcentage de vos clients détient des comptes multi-devises pour faciliter des transactions internationales ?</label>
+            <input type="radio" name="q8" value="1"> Moins de 10% <br>
+            <input type="radio" name="q8" value="2"> Entre 10% et 30% <br>
+            <input type="radio" name="q8" value="3"> Plus de 30% <br>
+
+            <!-- Question 9 -->
+            <label>9. Disposez-vous de procédures renforcées pour les fonds provenant de secteurs ou de pays à haut risque ?</label>
+            <input type="radio" name="q9" value="3"> Oui <br>
+            <input type="radio" name="q9" value="1"> Non <br>
+
+            <!-- Question 10 -->
+            <label>10. Vos clients transfèrent-ils régulièrement des fonds dans des juridictions offshore ?</label>
+            <input type="radio" name="q10" value="1"> Non <br>
+            <input type="radio" name="q10" value="2"> Oui, mais rarement <br>
+            <input type="radio" name="q10" value="3"> Oui, fréquemment <br>
+
+            <!-- Submit button -->
+            <div class="btn-container">
+                <button type="button" class="submit-btn" onclick="calculateScore()">Calculer le score</button>
+            </div>
+
+            <!-- Result -->
+            <div class="result" id="result"></div>
+        </form>
+    </div>
+
+    <script>
+        function calculateScore() {
+            var totalScore = 0;
+            var form = document.forms['scoreForm'];
+
+            // Add up the score for each question
+            for (var i = 1; i <= 10; i++) {
+                var question = form['q' + i];
+                for (var j = 0; j < question.length; j++) {
+                    if (question[j].checked) {
+                        totalScore += parseInt(question[j].value);
+                    }
+                }
+            }
+
+            // Display the result
+            var scoreOutOfTen = (totalScore / 30) * 10;
+            document.getElementById('result').innerHTML = 'Votre score est de : ' + totalScore + ' / 30';
+
+            // Store the score in localStorage (normalized on a scale of 10)
+            localStorage.setItem("score3", scoreOutOfTen.toFixed(1));
+
+            // Redirect to homepage after calculating the score
+            setTimeout(function() {
+                window.location.href = 'homepagequestionnaire.html';
+            }, 2000); // 2-second delay before redirecting
+        }
+    </script>
+
+</body>
+</html>

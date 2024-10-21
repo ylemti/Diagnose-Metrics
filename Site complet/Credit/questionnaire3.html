@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rentabilité</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #2c3e50;
+        }
+
+        label {
+            font-size: 16px;
+            display: block;
+            margin: 10px 0;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .submit-btn {
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover {
+            background-color: #218c4f;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #27ae60;
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Évaluation - Rentabilité</h1>
+        <p>Répondez aux questions pour évaluer la rentabilité de votre entreprise.</p>
+    </div>
+
+    <div class="container">
+        <form id="scoreForm">
+            <!-- Question 1 -->
+            <label>1. Quel est votre taux de marge nette ?</label>
+            <input type="radio" name="q1" value="3"> Supérieur à 15% <br>
+            <input type="radio" name="q1" value="2"> Entre 5% et 15% <br>
+            <input type="radio" name="q1" value="1"> Inférieur à 5% <br>
+
+            <!-- Question 2 -->
+            <label>2. Quel est votre retour sur investissement (ROI) moyen ?</label>
+            <input type="radio" name="q2" value="3"> Supérieur à 20% <br>
+            <input type="radio" name="q2" value="2"> Entre 10% et 20% <br>
+            <input type="radio" name="q2" value="1"> Inférieur à 10% <br>
+
+            <!-- Question 3 -->
+            <label>3. Comment évolue votre chiffre d'affaires sur les trois dernières années ?</label>
+            <input type="radio" name="q3" value="3"> En forte croissance <br>
+            <input type="radio" name="q3" value="2"> Stable <br>
+            <input type="radio" name="q3" value="1"> En baisse <br>
+
+            <!-- Question 4 -->
+            <label>4. Votre résultat d'exploitation est-il suffisant pour couvrir vos coûts fixes et générer un bénéfice ?</label>
+            <input type="radio" name="q4" value="3"> Oui, largement suffisant <br>
+            <input type="radio" name="q4" value="2"> Oui, mais juste <br>
+            <input type="radio" name="q4" value="1"> Non, insuffisant <br>
+
+            <!-- Question 5 -->
+            <label>5. Quelle est votre capacité à dégager des bénéfices récurrents ?</label>
+            <input type="radio" name="q5" value="3"> Très bonne capacité <br>
+            <input type="radio" name="q5" value="2"> Moyenne capacité <br>
+            <input type="radio" name="q5" value="1"> Faible capacité <br>
+
+            <!-- Submit button -->
+            <div class="btn-container">
+                <button type="button" class="submit-btn" onclick="calculateScore()">Calculer le score</button>
+            </div>
+
+            <!-- Result -->
+            <div class="result" id="result"></div>
+        </form>
+    </div>
+
+    <script>
+        function calculateScore() {
+            var totalScore = 0;
+            var form = document.forms['scoreForm'];
+
+            // Additionner les scores de chaque question
+            for (var i = 1; i <= 5; i++) {
+                var question = form['q' + i];
+                for (var j = 0; j < question.length; j++) {
+                    if (question[j].checked) {
+                        totalScore += parseInt(question[j].value);
+                    }
+                }
+            }
+
+            // Afficher le résultat
+            var scoreOutOfTen = (totalScore / 15) * 10;
+            document.getElementById('result').innerHTML = 'Votre score est de : ' + scoreOutOfTen.toFixed(1) + ' / 10';
+
+            // Stocker le score dans localStorage
+            localStorage.setItem("score3", scoreOutOfTen.toFixed(1));
+
+            // Redirection vers la page d'accueil après 2 secondes
+            setTimeout(function() {
+                window.location.href = 'homepagecredit.html';
+            }, 2000);
+        }
+    </script>
+
+</body>
+</html>

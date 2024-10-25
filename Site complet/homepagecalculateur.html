@@ -97,7 +97,7 @@
         }
 
         #radarChartContainer {
-            max-width: 400px; /* Taille réduite pour un graphique moins imposant */
+            max-width: 400px;
             margin: 20px auto;
         }
 
@@ -161,7 +161,6 @@
     </div>
 
     <div class="container">
-        <!-- Scorecard pour chaque calculateur -->
         <div class="scorecard">
             <h2>ESG</h2>
             <div class="stars" id="stars1">⭐⭐⭐⭐⭐</div>
@@ -195,18 +194,14 @@
 
     <button class="btn-calculate" onclick="calculateAndDisplay()">Calculer le score global</button>
 
-    <!-- Conclusion -->
     <div class="conclusion" id="conclusionText"></div>
 
-    <!-- Bouton de prise de contact -->
     <button class="btn-contact" id="btnContact" onclick="openModal()">Prendre contact</button>
 
-    <!-- Graphique en radar -->
     <div id="radarChartContainer">
         <canvas id="radarChart"></canvas>
     </div>
 
-    <!-- Boîte de dialogue pour l'envoi de mail -->
     <div class="modal" id="contactModal">
         <div class="modal-content">
             <h3>Informations supplémentaires</h3>
@@ -223,6 +218,8 @@
     </div>
 
     <script>
+        let conclusionText = "";
+
         function loadScores() {
             const stars1 = Math.floor(localStorage.getItem("scoreESG") / 8) || 0;
             const stars2 = Math.floor(localStorage.getItem("scoreAML") / 8) || 0;
@@ -251,13 +248,13 @@
             const totalScore = scoreESG + scoreAML + scoreDigital + scoreCredit + scoreCyber;
             const avgScore = totalScore / 5;
 
-            let conclusion = `Votre évaluation globale donne un score moyen de ${avgScore.toFixed(1)}/100. 
+            conclusionText = `Votre évaluation globale donne un score moyen de ${avgScore.toFixed(1)}/100. 
             Cette performance met en lumière des axes forts et des points d’amélioration. 
             Grâce à notre expertise, nous pouvons vous accompagner dans le renforcement des piliers ESG, 
             l’amélioration des pratiques anti-blanchiment, la digitalisation, le crédit et la cybersécurité, 
             pour une gouvernance plus résiliente et durable.`;
 
-            document.getElementById("conclusionText").textContent = conclusion;
+            document.getElementById("conclusionText").textContent = conclusionText;
 
             const ctx = document.getElementById("radarChart").getContext("2d");
             new Chart(ctx, {
@@ -295,7 +292,17 @@
             const creationDate = document.getElementById("creationDate").value;
             const additionalComment = document.getElementById("additionalComment").value;
 
-            const mailtoLink = `mailto:contact@company.com?subject=Diagnostic%20Évaluation&body=Numéro d'entreprise: ${companyNumber}%0ANoms des dirigeants: ${companyLeaders}%0ADate de constitution: ${creationDate}%0ACommentaire: ${additionalComment}%0A%0A${generateComment()}`;
+            const scores = {
+                ESG: getStars(Math.floor(localStorage.getItem("scoreESG") / 8) || 0),
+                "Anti-Blanchiment": getStars(Math.floor(localStorage.getItem("scoreAML") / 8) || 0),
+                Digitalisation: getStars(Math.floor(localStorage.getItem("scoreDigital") / 8) || 0),
+                Crédit: getStars(Math.floor(localStorage.getItem("scoreCredit") / 8) || 0),
+                Cybersécurité: getStars(Math.floor(localStorage.getItem("scoreCybersecurity") / 8) || 0)
+            };
+
+            const scoreSummary = `Scores par calculateur:\n- ESG: ${scores.ESG}\n- Anti-Blanchiment: ${scores["Anti-Blanchiment"]}\n- Digitalisation: ${scores.Digitalisation}\n- Crédit: ${scores.Crédit}\n- Cybersécurité: ${scores.Cybersécurité}`;
+
+            const mailtoLink = `mailto:contact@company.com?subject=Diagnostic%20Évaluation&body=Numéro d'entreprise: ${companyNumber}%0ANoms des dirigeants: ${companyLeaders}%0ADate de constitution: ${creationDate}%0ACommentaire: ${additionalComment}%0A%0AConclusion : ${conclusionText}%0A%0A${scoreSummary}`;
 
             window.location.href = mailtoLink;
             closeModal();
@@ -303,25 +310,6 @@
 
         function closeModal() {
             document.getElementById("contactModal").style.display = "none";
-        }
-
-        function generateComment() {
-            const scores = {
-                esg: localStorage.getItem("scoreESG") || 0,
-                aml: localStorage.getItem("scoreAML") || 0,
-                digital: localStorage.getItem("scoreDigital") || 0,
-                credit: localStorage.getItem("scoreCredit") || 0,
-                cybersecurity: localStorage.getItem("scoreCybersecurity") || 0
-            };
-
-            let comment = "Voici une évaluation des performances de votre entreprise:\n\n";
-            comment += "ESG: " + scores.esg + " / 100\n";
-            comment += "Anti-Blanchiment: " + scores.aml + " / 100\n";
-            comment += "Digitalisation: " + scores.digital + " / 100\n";
-            comment += "Crédit: " + scores.credit + " / 100\n";
-            comment += "Cybersécurité: " + scores.cybersecurity + " / 100\n";
-
-            return comment;
         }
 
         window.onload = loadScores;

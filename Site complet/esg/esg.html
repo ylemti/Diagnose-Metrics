@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Évaluation ESG : Écologie, Social, Gouvernance</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        .scorecard {
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .scorecard h2 {
+            color: #2c3e50;
+            font-size: 16px;
+        }
+
+        .scorecard p {
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn-calculate {
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .btn-home {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .result {
+            font-size: 16px;
+            color: #2c3e50;
+            font-weight: bold;
+            margin-top: 20px;
+            font-family: 'Georgia', serif;
+        }
+
+        .footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        #myChart {
+            max-width: 800px;
+            margin: 30px auto;
+        }
+
+        .conclusion {
+            font-size: 14px;
+            font-style: italic;
+            line-height: 1.6;
+            color: #2c3e50;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #27ae60;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Évaluation ESG : Écologie, Social, Gouvernance</h1>
+        <p>Analyse des 3 piliers : Écologie, Social, Gouvernance et calcul du score global</p>
+    </div>
+
+    <div class="container">
+        <!-- Scorecard pour Ecologie -->
+        <div class="scorecard">
+            <h2>Écologie</h2>
+            <p>Résultat : <strong id="scoreEcologie">Calcul en cours...</strong></p>
+            <a href="ecologie.html" class="btn btn-primary">Accéder à l'évaluation Écologie</a>
+        </div>
+
+        <!-- Scorecard pour Social -->
+        <div class="scorecard">
+            <h2>Social</h2>
+            <p>Résultat : <strong id="scoreSocial">Calcul en cours...</strong></p>
+            <a href="social.html" class="btn btn-primary">Accéder à l'évaluation Social</a>
+        </div>
+
+        <!-- Scorecard pour Gouvernance -->
+        <div class="scorecard">
+            <h2>Gouvernance</h2>
+            <p>Résultat : <strong id="scoreGovernance">Calcul en cours...</strong></p>
+            <a href="governance.html" class="btn btn-primary">Accéder à l'évaluation Gouvernance</a>
+        </div>
+    </div>
+
+    <!-- Bouton pour calculer le score global -->
+    <div class="btn-container">
+        <button class="btn-calculate" onclick="calculateTotal()">Calculer le score global</button>
+        <div class="result" id="totalResult"></div>
+    </div>
+
+    <!-- Affichage du graphique en barres -->
+    <div id="myChartContainer">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <!-- Zone de conclusion -->
+    <div class="conclusion" id="conclusionText"></div>
+
+    <!-- Bouton de retour à l'accueil -->
+    <div class="btn-container">
+        <button class="btn-home" id="btnHome" onclick="goHome()">Revenir à l'accueil</button>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Évaluation ESG</p>
+    </div>
+
+    <script>
+        // Fonction pour récupérer et afficher les scores depuis le localStorage
+        function loadScores() {
+            document.getElementById("scoreEcologie").textContent = (localStorage.getItem("scoreEcologie") || "Pas encore calculé") + "/100";
+            document.getElementById("scoreSocial").textContent = (localStorage.getItem("scoreSocial") || "Pas encore calculé") + "/100";
+            document.getElementById("scoreGovernance").textContent = (localStorage.getItem("scoreGovernance") || "Pas encore calculé") + "/100";
+        }
+
+        // Fonction pour calculer le score global et afficher le graphique
+        function calculateTotal() {
+            const scoreEcologie = parseFloat(localStorage.getItem("scoreEcologie")) || 0;
+            const scoreSocial = parseFloat(localStorage.getItem("scoreSocial")) || 0;
+            const scoreGovernance = parseFloat(localStorage.getItem("scoreGovernance")) || 0;
+
+            const totalScore = scoreEcologie + scoreSocial + scoreGovernance;
+            document.getElementById("totalResult").textContent = "Votre score global est de : " + totalScore + " / 300";
+
+            // Stocker le score total dans le localStorage sous la clé "scoreESG"
+            localStorage.setItem("scoreESG", totalScore);
+
+            // Génération du graphique en barres
+            const ctx = document.getElementById('myChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Écologie', 'Social', 'Gouvernance'],
+                    datasets: [{
+                        label: 'Score par catégorie',
+                        data: [scoreEcologie, scoreSocial, scoreGovernance],
+                        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+                        borderColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100
+                        }
+                    },
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: true
+                        }
+                    }
+                }
+            });
+
+            // Ajouter une conclusion basée sur le score total
+            let conclusion = '';
+            if (totalScore > 250) {
+                conclusion = "Votre entreprise est fortement engagée dans les critères ESG. Vous excellez dans plusieurs domaines clés.";
+            } else if (totalScore > 150) {
+                conclusion = "Votre entreprise est bien positionnée dans les critères ESG, mais certains aspects nécessitent des améliorations.";
+            } else {
+                conclusion = "Votre entreprise présente des lacunes importantes dans les critères ESG. Des améliorations sont nécessaires.";
+            }
+
+            document.getElementById("conclusionText").textContent = conclusion;
+
+            // Afficher le bouton de retour à l'accueil
+            document.getElementById('btnHome').style.display = 'block';
+        }
+
+        // Fonction pour retourner à la page d'accueil
+        function goHome() {
+            window.location.href = '../homepagecalculateur.html'; // Redirection vers la page d'accueil
+        }
+
+        // Charger les scores lors du chargement de la page
+        window.onload = loadScores;
+    </script>
+
+</body>
+</html>

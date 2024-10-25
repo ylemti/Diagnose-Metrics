@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Évaluation de la maturité digitale</title>
+    <title>Évaluation de la Cybersécurité - Page d'accueil</title>
     <style>
         body {
             font-family: 'Georgia', serif;
@@ -25,18 +25,20 @@
         }
 
         .container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-gap: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 10px;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 10px;
         }
 
         .scorecard {
             background-color: white;
             border: 1px solid #ccc;
             border-radius: 8px;
+            width: 22%;
+            margin: 10px;
             padding: 20px;
             text-align: center;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -117,33 +119,39 @@
 <body>
 
     <div class="header">
-        <h1>Évaluation de la maturité numérique</h1>
-        <p>Analyse des quatre dimensions clés de l'intégration digitale</p>
+        <h1>Rapport d'évaluation de la Cybersécurité</h1>
+        <p>Analyse des 5 axes clés : Accès, Formation, Sécurité des données, Gestion des incidents, Protection des infrastructures</p>
     </div>
 
     <div class="container">
         <div class="scorecard">
-            <h2>Intégration des systèmes numériques</h2>
-            <p>Résultat : <strong id="score1">Calcul en cours...</strong></p>
+            <h2>Accès</h2>
+            <p>Résultat : <strong id="scoreAccess">Calcul en cours...</strong></p>
             <a href="questionnaire1.html">Accéder à l'évaluation</a>
         </div>
 
         <div class="scorecard">
-            <h2>Expérience client digitale</h2>
-            <p>Résultat : <strong id="score2">Calcul en cours...</strong></p>
+            <h2>Formation</h2>
+            <p>Résultat : <strong id="scoreFormation">Calcul en cours...</strong></p>
             <a href="questionnaire2.html">Accéder à l'évaluation</a>
         </div>
 
         <div class="scorecard">
-            <h2>Culture et compétences numériques</h2>
-            <p>Résultat : <strong id="score3">Calcul en cours...</strong></p>
+            <h2>Sécurité des données</h2>
+            <p>Résultat : <strong id="scoreDataSecurity">Calcul en cours...</strong></p>
             <a href="questionnaire3.html">Accéder à l'évaluation</a>
         </div>
 
         <div class="scorecard">
-            <h2>Marketing digital et réseaux sociaux</h2>
-            <p>Résultat : <strong id="score4">Calcul en cours...</strong></p>
+            <h2>Gestion des incidents</h2>
+            <p>Résultat : <strong id="scoreIncidentManagement">Calcul en cours...</strong></p>
             <a href="questionnaire4.html">Accéder à l'évaluation</a>
+        </div>
+
+        <div class="scorecard">
+            <h2>Protection des infrastructures</h2>
+            <p>Résultat : <strong id="scoreInfrastructureSecurity">Calcul en cours...</strong></p>
+            <a href="questionnaire5.html">Accéder à l'évaluation</a>
         </div>
     </div>
 
@@ -166,62 +174,71 @@
     </div>
 
     <div class="footer">
-        <p>&copy; 2024 Évaluation de la maturité numérique</p>
+        <p>&copy; 2024 Rapport d'évaluation de la Cybersécurité</p>
     </div>
 
     <script>
+        // Fonction pour récupérer et afficher les scores depuis le localStorage
         function loadScores() {
-            document.getElementById("score1").textContent = (localStorage.getItem("scoreDigital1") || "Pas encore calculé") + "/10";
-            document.getElementById("score2").textContent = (localStorage.getItem("scoreDigital2") || "Pas encore calculé") + "/10";
-            document.getElementById("score3").textContent = (localStorage.getItem("scoreDigital3") || "Pas encore calculé") + "/10";
-            document.getElementById("score4").textContent = (localStorage.getItem("scoreDigital4") || "Pas encore calculé") + "/10";
+            document.getElementById("scoreAccess").textContent = (localStorage.getItem("scoreAccess") || "Pas encore calculé") + "/18";
+            document.getElementById("scoreFormation").textContent = (localStorage.getItem("scoreFormation") || "Pas encore calculé") + "/18";
+            document.getElementById("scoreDataSecurity").textContent = (localStorage.getItem("scoreDataSecurity") || "Pas encore calculé") + "/18";
+            document.getElementById("scoreIncidentManagement").textContent = (localStorage.getItem("scoreIncidentManagement") || "Pas encore calculé") + "/18";
+            document.getElementById("scoreInfrastructureSecurity").textContent = (localStorage.getItem("scoreInfrastructureSecurity") || "Pas encore calculé") + "/18";
         }
 
+        // Fonction pour calculer le score total et remonter le score global dans le localStorage
         function calculateTotal() {
-            const score1 = parseFloat(localStorage.getItem("scoreDigital1")) || 0;
-            const score2 = parseFloat(localStorage.getItem("scoreDigital2")) || 0;
-            const score3 = parseFloat(localStorage.getItem("scoreDigital3")) || 0;
-            const score4 = parseFloat(localStorage.getItem("scoreDigital4")) || 0;
+            const scoreAccess = parseFloat(localStorage.getItem("scoreAccess")) || 0;
+            const scoreFormation = parseFloat(localStorage.getItem("scoreFormation")) || 0;
+            const scoreDataSecurity = parseFloat(localStorage.getItem("scoreDataSecurity")) || 0;
+            const scoreIncidentManagement = parseFloat(localStorage.getItem("scoreIncidentManagement")) || 0;
+            const scoreInfrastructureSecurity = parseFloat(localStorage.getItem("scoreInfrastructureSecurity")) || 0;
 
-            const totalScore = score1 + score2 + score3 + score4;
-            document.getElementById("totalResult").textContent = "Votre score total est de : " + totalScore + " / 40";
+            const totalScore = scoreAccess + scoreFormation + scoreDataSecurity + scoreIncidentManagement + scoreInfrastructureSecurity;
+            document.getElementById("totalResult").textContent = "Votre score total est de : " + totalScore + " / 90";
 
-            localStorage.setItem("scoreDigital", totalScore);
+            // Stocker le score total dans le localStorage sous la clé "scoreCybersecurity"
+            localStorage.setItem("scoreCybersecurity", totalScore);
 
-            let message = "Votre maturité numérique globale est évaluée à " + totalScore + " / 40.\n";
-            if (totalScore > 30) {
-                message += "Votre entreprise est fortement digitalisée.";
-            } else if (totalScore > 20) {
-                message += "Votre entreprise est modérément digitalisée.";
+            let message = "Votre diagnostic cybersécurité est évalué à " + totalScore + " / 90.\n";
+            if (totalScore > 70) {
+                message += "Très bonne maîtrise des 5 axes de la cybersécurité.";
+            } else if (totalScore > 50) {
+                message += "Bon niveau global, mais des améliorations sont nécessaires.";
             } else {
-                message += "Votre entreprise présente un faible degré de digitalisation.";
+                message += "Des actions urgentes sont recommandées pour renforcer la sécurité.";
             }
             document.getElementById("conclusionText").textContent = message;
 
+            // Générer le graphique
             const ctx = document.getElementById('myChart').getContext('2d');
-            const myChart = new Chart(ctx, {
+            new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ['Systèmes numériques', 'Expérience client', 'Culture numérique', 'Marketing digital'],
+                    labels: ['Accès', 'Formation', 'Sécurité des données', 'Gestion des incidents', 'Protection des infrastructures'],
                     datasets: [{
-                        data: [score1, score2, score3, score4],
-                        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0']
+                        data: [scoreAccess, scoreFormation, scoreDataSecurity, scoreIncidentManagement, scoreInfrastructureSecurity],
+                        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF']
                     }]
                 },
                 options: {
                     responsive: true,
-                    scales: { y: { beginAtZero: true, max: 10 } },
+                    scales: { y: { beginAtZero: true, max: 18 } },
                     plugins: { legend: { display: false } }
                 }
             });
 
+            // Afficher le bouton de retour à l'accueil
             document.getElementById('btnHome').style.display = 'block';
         }
 
+        // Fonction pour revenir à la page d'accueil
         function goHome() {
             window.location.href = '../homepagecalculateur.html';
         }
 
+        // Charger les scores lors du chargement de la page
         window.onload = loadScores;
     </script>
 

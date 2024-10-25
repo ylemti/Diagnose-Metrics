@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Évaluation Écologie</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-size: 16px;
+            display: block;
+            margin: 10px 0;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .submit-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #27ae60;
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Évaluation Écologie</h1>
+        <p>Veuillez répondre aux questions ci-dessous pour évaluer votre performance écologique</p>
+    </div>
+
+    <div class="container">
+        <form id="ecologieForm">
+            <!-- Question 1 -->
+            <label>1. Quelle est la contribution de votre entreprise à la réduction de la pauvreté environnementale ?</label>
+            <input type="radio" name="q1" value="1"> Aucune implication <br>
+            <input type="radio" name="q1" value="2"> Initiatives limitées <br>
+            <input type="radio" name="q1" value="3"> Partenariats importants avec des ONG <br>
+
+            <!-- Question 2 -->
+            <label>2. Comment votre entreprise favorise-t-elle des pratiques agricoles durables ?</label>
+            <input type="radio" name="q2" value="1"> Pas du tout <br>
+            <input type="radio" name="q2" value="2"> Certaines pratiques durables <br>
+            <input type="radio" name="q2" value="3"> Majorité de pratiques durables <br>
+
+            <!-- Question 3 -->
+            <label>3. Quelle est la politique de votre entreprise en matière de bien-être environnemental et de santé des travailleurs ?</label>
+            <input type="radio" name="q3" value="1"> Pas de politique en place <br>
+            <input type="radio" name="q3" value="2"> Des politiques de base en place <br>
+            <input type="radio" name="q3" value="3"> Politiques avancées et activement mises en œuvre <br>
+
+            <!-- Question 4 -->
+            <label>4. Votre entreprise propose-t-elle des programmes de formation à la durabilité environnementale pour ses employés ?</label>
+            <input type="radio" name="q4" value="1"> Aucun programme <br>
+            <input type="radio" name="q4" value="2"> Programmes ponctuels <br>
+            <input type="radio" name="q4" value="3"> Formation continue <br>
+
+            <!-- Question 5 -->
+            <label>5. Dans les métiers liés à la durabilité, quel est le niveau de diversité de genre au sein de votre entreprise ?</label>
+            <input type="radio" name="q5" value="1"> Faible diversité <br>
+            <input type="radio" name="q5" value="2"> Modérée <br>
+            <input type="radio" name="q5" value="3"> Forte diversité <br>
+
+            <!-- Question 6 -->
+            <label>6. Votre entreprise a-t-elle des objectifs pour réduire la consommation d'eau ?</label>
+            <input type="radio" name="q6" value="1"> Aucun objectif <br>
+            <input type="radio" name="q6" value="2"> Objectifs limités <br>
+            <input type="radio" name="q6" value="3"> Objectifs ambitieux avec résultats mesurables <br>
+
+            <!-- Question 7 -->
+            <label>7. Quel pourcentage de l'énergie utilisée par votre entreprise provient de sources renouvelables ?</label>
+            <input type="radio" name="q7" value="1"> Moins de 10% <br>
+            <input type="radio" name="q7" value="2"> Entre 10% et 50% <br>
+            <input type="radio" name="q7" value="3"> Plus de 50% <br>
+
+            <!-- Question 8 -->
+            <label>8. Votre entreprise investit-elle dans des infrastructures écologiques ?</label>
+            <input type="radio" name="q8" value="1"> Aucun investissement <br>
+            <input type="radio" name="q8" value="2"> Investissement limité <br>
+            <input type="radio" name="q8" value="3"> Investissement majeur dans des infrastructures écologiques <br>
+
+            <!-- Question 9 -->
+            <label>9. Quel pourcentage de votre budget d’innovation est alloué à des projets de durabilité ?</label>
+            <input type="radio" name="q9" value="1"> Moins de 10% <br>
+            <input type="radio" name="q9" value="2"> Entre 10% et 30% <br>
+            <input type="radio" name="q9" value="3"> Plus de 30% <br>
+
+            <!-- Question 10 -->
+            <label>10. Comment votre entreprise intègre-t-elle la durabilité dans sa stratégie de croissance économique ?</label>
+            <input type="radio" name="q10" value="1"> Pas d'intégration spécifique <br>
+            <input type="radio" name="q10" value="2"> Intégration partielle <br>
+            <input type="radio" name="q10" value="3"> Stratégie claire orientée vers la croissance verte <br>
+
+            <!-- Question 11 -->
+            <label>11. Quel pourcentage des matières premières utilisées par votre entreprise provient de sources durables ?</label>
+            <input type="radio" name="q11" value="1"> Moins de 25% <br>
+            <input type="radio" name="q11" value="2"> Entre 25% et 50% <br>
+            <input type="radio" name="q11" value="3"> Plus de 50% <br>
+
+            <!-- Question 12 -->
+            <label>12. Comment votre entreprise lutte-t-elle contre le changement climatique à travers la réduction des émissions de CO2 ?</label>
+            <input type="radio" name="q12" value="1"> Pas d’objectifs clairs <br>
+            <input type="radio" name="q12" value="2"> Objectifs limités <br>
+            <input type="radio" name="q12" value="3"> Objectifs ambitieux alignés sur les accords internationaux <br>
+
+            <!-- Question 13 -->
+            <label>13. Votre entreprise compense-t-elle ses émissions de gaz à effet de serre ?</label>
+            <input type="radio" name="q13" value="1"> Aucune compensation <br>
+            <input type="radio" name="q13" value="2"> Compensation partielle <br>
+            <input type="radio" name="q13" value="3"> Compensation complète avec suivi et rapports <br>
+
+            <!-- Question 14 -->
+            <label>14. Comment votre entreprise évite-t-elle la pollution des milieux aquatiques ?</label>
+            <input type="radio" name="q14" value="1"> Aucune politique spécifique <br>
+            <input type="radio" name="q14" value="2"> Politique minimale <br>
+            <input type="radio" name="q14" value="3"> Politique avancée avec programmes de prévention <br>
+
+            <!-- Question 15 -->
+            <label>15. Dans quelle mesure votre entreprise soutient-elle la protection de la biodiversité aquatique ?</label>
+            <input type="radio" name="q15" value="1"> Aucun soutien <br>
+            <input type="radio" name="q15" value="2"> Soutien limité <br>
+            <input type="radio" name="q15" value="3"> Soutien actif avec suivi des résultats <br>
+
+            <!-- Question 16 -->
+            <label>16. Quelle est l'implication de votre entreprise dans la protection de la biodiversité terrestre ?</label>
+            <input type="radio" name="q16" value="1"> Pas d'implication <br>
+            <input type="radio" name="q16" value="2"> Implication modérée <br>
+            <input type="radio" name="q16" value="3"> Implication forte avec partenariats <br>
+
+            <!-- Question 17 -->
+            <label>17. Votre entreprise participe-t-elle à des projets de reforestation ou de restauration d’écosystèmes ?</label>
+            <input type="radio" name="q17" value="1"> Pas du tout <br>
+            <input type="radio" name="q17" value="2"> Participation limitée <br>
+            <input type="radio" name="q17" value="3"> Participation importante et régulière <br>
+
+            <!-- Question 18 -->
+            <label>18. Comment votre entreprise encourage-t-elle la consommation responsable au sein de la chaîne d'approvisionnement ?</label>
+            <input type="radio" name="q18" value="1"> Pas d'initiatives <br>
+            <input type="radio" name="q18" value="2"> Initiatives ponctuelles <br>
+            <input type="radio" name="q18" value="3"> Programme complet avec objectifs mesurables <br>
+
+            <!-- Question 19 -->
+            <label>19. Quel pourcentage des déchets produits par votre entreprise est recyclé ou réutilisé ?</label>
+            <input type="radio" name="q19" value="1"> Moins de 25% <br>
+            <input type="radio" name="q19" value="2"> Entre 25% et 50% <br>
+            <input type="radio" name="q19" value="3"> Plus de 50% <br>
+
+            <!-- Question 20 -->
+            <label>20. Votre entreprise soutient-elle activement des initiatives locales pour la durabilité des communautés ?</label>
+            <input type="radio" name="q20" value="1"> Pas du tout <br>
+            <input type="radio" name="q20" value="2"> Oui, mais avec un impact limité <br>
+            <input type="radio" name="q20" value="3"> Oui, avec un impact mesurable et durable <br>
+
+            <!-- Question 21 -->
+            <label>21. Quel est l'engagement de votre entreprise pour réduire les inégalités d'accès aux ressources naturelles ?</label>
+            <input type="radio" name="q21" value="1"> Aucun engagement <br>
+            <input type="radio" name="q21" value="2"> Engagement limité <br>
+            <input type="radio" name="q21" value="3"> Engagement fort avec des actions concrètes <br>
+
+            <!-- Question 22 -->
+            <label>22. Quelle est la part des sources d'énergie renouvelables dans votre entreprise ?</label>
+            <input type="radio" name="q22" value="1"> Moins de 25% <br>
+            <input type="radio" name="q22" value="2"> Entre 25% et 50% <br>
+            <input type="radio" name="q22" value="3"> Plus de 50% <br>
+
+            <!-- Question 23 -->
+            <label>23. Dans quelle mesure votre entreprise est-elle engagée dans des partenariats pour des initiatives écologiques ?</label>
+            <input type="radio" name="q23" value="1"> Aucun partenariat <br>
+            <input type="radio" name="q23" value="2"> Partenariats limités <br>
+            <input type="radio" name="q23" value="3"> Partenariats forts avec résultats <br>
+
+            <!-- Question 24 -->
+            <label>24. Votre entreprise développe-t-elle des technologies vertes pour réduire son impact environnemental ?</label>
+            <input type="radio" name="q24" value="1"> Pas du tout <br>
+            <input type="radio" name="q24" value="2"> Oui, mais de manière limitée <br>
+            <input type="radio" name="q24" value="3"> Oui, avec des résultats mesurables <br>
+
+            <!-- Question 25 -->
+            <label>25. Quel niveau de partenariat votre entreprise développe-t-elle pour atteindre les objectifs de durabilité ?</label>
+            <input type="radio" name="q25" value="1"> Aucun partenariat <br>
+            <input type="radio" name="q25" value="2"> Partenariats limités <br>
+            <input type="radio" name="q25" value="3"> Partenariats forts avec résultats <br>
+
+            <!-- Submit button -->
+            <div class="btn-container">
+                <button type="button" class="submit-btn" onclick="calculateScore()">Calculer le score</button>
+            </div>
+
+            <!-- Result -->
+            <div class="result" id="result"></div>
+        </form>
+    </div>
+
+    <script>
+        function calculateScore() {
+            var totalScore = 0;
+            var form = document.forms['ecologieForm'];
+
+            // Add up the score for each question
+            for (var i = 1; i <= 25; i++) {
+                var question = form['q' + i];
+                for (var j = 0; j < question.length; j++) {
+                    if (question[j].checked) {
+                        totalScore += parseInt(question[j].value);
+                    }
+                }
+            }
+
+            // Display the result
+            var scoreOutOfHundred = (totalScore / 75) * 100; // Normalized on a scale of 100
+            document.getElementById('result').innerHTML = 'Votre score écologique est de : ' + scoreOutOfHundred.toFixed(2) + ' / 100';
+
+            // Store the score in localStorage
+            localStorage.setItem("scoreEcologie", scoreOutOfHundred.toFixed(2));
+
+            // Redirect to ESG homepage after calculating the score
+            setTimeout(function() {
+                window.location.href = 'ESG.html';
+            }, 2000); // 2-second delay before redirecting
+        }
+    </script>
+
+</body>
+</html>

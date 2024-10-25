@@ -3,97 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diagnostic Général</title>
+    <title>Master Your Metrics</title>
     <style>
         body {
-            font-family: 'Georgia', serif;
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
             margin: 0;
             padding: 0;
-            background-image: url('fondecranscalculateur.PNG');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
         }
 
         .header {
-            background-color: rgba(44, 62, 80, 0.8);
+            background-color: #34495e;
             color: white;
-            padding: 30px;
+            padding: 15px;
             text-align: center;
+            width: 100%;
         }
 
         .header h1 {
-            font-size: 2.5em;
+            font-size: 2em;
             margin: 0;
         }
 
         .container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-gap: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
             max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+            margin-top: 10px;
         }
 
-        .card {
-            background-color: rgba(255, 255, 255, 0.9);
+        .scorecard {
+            background-color: white;
             border: 1px solid #ccc;
             border-radius: 8px;
             padding: 20px;
             text-align: center;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 200px;
+            margin: 10px;
+            transition: transform 0.3s ease;
         }
 
-        .card h2 {
+        .scorecard:hover {
+            transform: scale(1.05);
+        }
+
+        .scorecard h2 {
             color: #2c3e50;
             font-size: 18px;
         }
 
-        .card p {
-            font-size: 14px;
-            margin-top: 5px;
+        .scorecard .stars {
+            font-size: 18px;
+            color: gold;
+            margin-top: 10px;
         }
 
-        .card a {
-            display: inline-block;
+        .btn-calculate {
             background-color: #27ae60;
             color: white;
+            border: none;
             padding: 10px 20px;
-            margin-top: 15px;
-            text-decoration: none;
             border-radius: 5px;
-            font-size: 16px;
-        }
-
-        .card a:hover {
-            background-color: #218c4f;
-        }
-
-        .footer {
-            background-color: rgba(44, 62, 80, 0.8);
-            color: white;
-            text-align: center;
-            padding: 10px;
+            font-size: 18px;
+            cursor: pointer;
             margin-top: 20px;
         }
 
-        .contact-button {
-            display: block;
-            background-color: #2980b9;
+        .btn-contact {
+            display: none;
+            background-color: #3498db;
             color: white;
-            padding: 15px;
-            text-align: center;
-            text-decoration: none;
-            font-size: 18px;
+            border: none;
+            padding: 10px 20px;
             border-radius: 5px;
-            margin: 20px auto;
-            width: 200px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 20px;
         }
 
-        .contact-button:hover {
-            background-color: #1f618d;
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+            width: 100%;
+            font-size: 14px;
+            color: #34495e;
+        }
+
+        #radarChartContainer {
+            max-width: 400px; /* Taille réduite pour un graphique moins imposant */
+            margin: 20px auto;
+        }
+
+        .conclusion {
+            font-size: 14px;
+            font-style: italic;
+            line-height: 1.6;
+            color: #2c3e50;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #27ae60;
         }
 
         .modal {
@@ -104,144 +121,210 @@
             top: 0;
             width: 100%;
             height: 100%;
-            overflow: auto;
-            background-color: rgb(0, 0, 0);
-            background-color: rgba(0, 0, 0, 0.4);
-            padding-top: 60px;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
         }
 
         .modal-content {
-            background-color: #fefefe;
-            margin: 5% auto;
+            background-color: white;
             padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            max-width: 500px;
+            border-radius: 10px;
+            width: 400px;
+            text-align: center;
         }
 
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        label {
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        input, textarea {
+        .modal-content input, .modal-content textarea {
             width: 100%;
             padding: 10px;
-            margin-top: 5px;
-            margin-bottom: 20px;
+            margin: 10px 0;
             border: 1px solid #ccc;
-            border-radius: 4px;
+            border-radius: 5px;
         }
 
-        button {
+        .modal-content button {
+            padding: 10px 20px;
             background-color: #27ae60;
             color: white;
-            padding: 10px 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
         }
-
-        button:hover {
-            background-color: #218c4f;
-        }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
     <div class="header">
-        <h1>Bienvenue sur le portail de diagnostic</h1>
-        <p>Choisissez l'un des calculateurs ci-dessous pour évaluer votre entreprise</p>
+        <h1>Master Your Metrics</h1>
+        <p>Portail de Diagnostic - Évaluation Globale</p>
     </div>
 
     <div class="container">
-        <!-- Les quatre calculateurs -->
-        <div class="card">
-            <h2>Calculateur ESG (Environnement, Social, Gouvernance)</h2>
-            <p>Évaluez la performance de votre entreprise en matière de critères ESG.</p>
-            <a href="esg/ESG.html">Accéder au calculateur ESG</a>
+        <!-- Scorecard pour chaque calculateur -->
+        <div class="scorecard">
+            <h2>ESG</h2>
+            <div class="stars" id="stars1">⭐⭐⭐⭐⭐</div>
+            <a href="esg/ESG.html">Accéder</a>
         </div>
 
-        <div class="card">
-            <h2>Calculateur Anti-Blanchiment</h2>
-            <p>Évaluez votre entreprise en fonction de sa capacité à gérer les risques de blanchiment de capitaux.</p>
-            <a href="AML/homepagequestionnaire.html">Accéder au calculateur Anti-Blanchiment</a>
+        <div class="scorecard">
+            <h2>Anti-Blanchiment</h2>
+            <div class="stars" id="stars2">⭐⭐⭐⭐⭐</div>
+            <a href="AML/homepagequestionnaire.html">Accéder</a>
         </div>
 
-        <div class="card">
-            <h2>Calculateur d'Intégration et Maturité Digitale</h2>
-            <p>Diagnostiquez l'intégration numérique et la maturité digitale de votre entreprise.</p>
-            <a href="Digital/homepagescorecarddigitalisation.html">Accéder au calculateur de Maturité Digitale</a>
+        <div class="scorecard">
+            <h2>Digitalisation</h2>
+            <div class="stars" id="stars3">⭐⭐⭐⭐⭐</div>
+            <a href="Digital/homepagescorecarddigitalisation.html">Accéder</a>
         </div>
 
-        <div class="card">
-            <h2>Calculateur de Capacité d'Emprunt</h2>
-            <p>Analysez la solvabilité, la rentabilité, et la liquidité de votre entreprise pour évaluer sa capacité d'emprunt.</p>
-            <a href="Credit/homepagecredit.html">Accéder au calculateur de Capacité d'Emprunt</a>
+        <div class="scorecard">
+            <h2>Crédit</h2>
+            <div class="stars" id="stars4">⭐⭐⭐⭐⭐</div>
+            <a href="Credit/homepagecredit.html">Accéder</a>
+        </div>
+
+        <div class="scorecard">
+            <h2>Cybersécurité</h2>
+            <div class="stars" id="stars5">⭐⭐⭐⭐⭐</div>
+            <a href="CyberSecurity/homepagesecurity.html">Accéder</a>
         </div>
     </div>
 
-    <a href="#contactForm" class="contact-button">Prendre Contact</a>
+    <button class="btn-calculate" onclick="calculateAndDisplay()">Calculer le score global</button>
 
-    <!-- Modal pour le formulaire de contact -->
-    <div id="contactForm" class="modal">
+    <!-- Conclusion -->
+    <div class="conclusion" id="conclusionText"></div>
+
+    <!-- Bouton de prise de contact -->
+    <button class="btn-contact" id="btnContact" onclick="openModal()">Prendre contact</button>
+
+    <!-- Graphique en radar -->
+    <div id="radarChartContainer">
+        <canvas id="radarChart"></canvas>
+    </div>
+
+    <!-- Boîte de dialogue pour l'envoi de mail -->
+    <div class="modal" id="contactModal">
         <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Formulaire de Contact</h2>
-            <form action="mailto:example@mail.com" method="post" enctype="text/plain">
-                <label for="companyNumber">Numéro d'entreprise</label>
-                <input type="text" id="companyNumber" name="companyNumber" required>
-
-                <label for="managerName">Nom des dirigeants</label>
-                <input type="text" id="managerName" name="managerName" required>
-
-                <label for="foundingDate">Date de constitution</label>
-                <input type="date" id="foundingDate" name="foundingDate" required>
-
-                <label for="comments">Commentaire</label>
-                <textarea id="comments" name="comments" rows="4" required></textarea>
-
-                <button type="submit">Envoyer</button>
-            </form>
+            <h3>Informations supplémentaires</h3>
+            <input type="text" id="companyNumber" placeholder="Numéro d'entreprise" required>
+            <input type="text" id="companyLeaders" placeholder="Noms des dirigeants" required>
+            <input type="date" id="creationDate" placeholder="Date de constitution" required>
+            <textarea id="additionalComment" placeholder="Commentaire personnalisé"></textarea>
+            <button onclick="sendEmail()">Envoyer</button>
         </div>
     </div>
 
     <div class="footer">
-        <p>&copy; 2024 Diagnostic Général</p>
+        <p>&copy; 2024 Portail de Diagnostic</p>
     </div>
 
     <script>
-        var modal = document.getElementById("contactForm");
-        var btn = document.querySelector(".contact-button");
-        var span = document.getElementsByClassName("close")[0];
+        function loadScores() {
+            const stars1 = Math.floor(localStorage.getItem("scoreESG") / 8) || 0;
+            const stars2 = Math.floor(localStorage.getItem("scoreAML") / 8) || 0;
+            const stars3 = Math.floor(localStorage.getItem("scoreDigital") / 8) || 0;
+            const stars4 = Math.floor(localStorage.getItem("scoreCredit") / 8) || 0;
+            const stars5 = Math.floor(localStorage.getItem("scoreCybersecurity") / 8) || 0;
 
-        btn.onclick = function() {
-            modal.style.display = "block";
+            document.getElementById("stars1").textContent = getStars(stars1);
+            document.getElementById("stars2").textContent = getStars(stars2);
+            document.getElementById("stars3").textContent = getStars(stars3);
+            document.getElementById("stars4").textContent = getStars(stars4);
+            document.getElementById("stars5").textContent = getStars(stars5);
         }
 
-        span.onclick = function() {
-            modal.style.display = "none";
+        function getStars(starCount) {
+            return "⭐⭐⭐⭐⭐".slice(0, starCount) + "☆☆☆☆☆".slice(starCount);
         }
 
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
+        function calculateAndDisplay() {
+            const scoreESG = parseFloat(localStorage.getItem("scoreESG")) || 0;
+            const scoreAML = parseFloat(localStorage.getItem("scoreAML")) || 0;
+            const scoreDigital = parseFloat(localStorage.getItem("scoreDigital")) || 0;
+            const scoreCredit = parseFloat(localStorage.getItem("scoreCredit")) || 0;
+            const scoreCyber = parseFloat(localStorage.getItem("scoreCybersecurity")) || 0;
+
+            const totalScore = scoreESG + scoreAML + scoreDigital + scoreCredit + scoreCyber;
+            const avgScore = totalScore / 5;
+
+            let conclusion = `Votre évaluation globale donne un score moyen de ${avgScore.toFixed(1)}/100. 
+            Cette performance met en lumière des axes forts et des points d’amélioration. 
+            Grâce à notre expertise, nous pouvons vous accompagner dans le renforcement des piliers ESG, 
+            l’amélioration des pratiques anti-blanchiment, la digitalisation, le crédit et la cybersécurité, 
+            pour une gouvernance plus résiliente et durable.`;
+
+            document.getElementById("conclusionText").textContent = conclusion;
+
+            const ctx = document.getElementById("radarChart").getContext("2d");
+            new Chart(ctx, {
+                type: "radar",
+                data: {
+                    labels: ["ESG", "Anti-Blanchiment", "Digitalisation", "Crédit", "Cybersécurité"],
+                    datasets: [{
+                        label: "Scores ESG",
+                        data: [scoreESG, scoreAML, scoreDigital, scoreCredit, scoreCyber],
+                        backgroundColor: "rgba(39, 174, 96, 0.4)",
+                        borderColor: "#27ae60",
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        r: {
+                            beginAtZero: true,
+                            max: 100
+                        }
+                    }
+                }
+            });
+
+            document.getElementById("btnContact").style.display = "block";
         }
+
+        function openModal() {
+            document.getElementById("contactModal").style.display = "flex";
+        }
+
+        function sendEmail() {
+            const companyNumber = document.getElementById("companyNumber").value;
+            const companyLeaders = document.getElementById("companyLeaders").value;
+            const creationDate = document.getElementById("creationDate").value;
+            const additionalComment = document.getElementById("additionalComment").value;
+
+            const mailtoLink = `mailto:contact@company.com?subject=Diagnostic%20Évaluation&body=Numéro d'entreprise: ${companyNumber}%0ANoms des dirigeants: ${companyLeaders}%0ADate de constitution: ${creationDate}%0ACommentaire: ${additionalComment}%0A%0A${generateComment()}`;
+
+            window.location.href = mailtoLink;
+            closeModal();
+        }
+
+        function closeModal() {
+            document.getElementById("contactModal").style.display = "none";
+        }
+
+        function generateComment() {
+            const scores = {
+                esg: localStorage.getItem("scoreESG") || 0,
+                aml: localStorage.getItem("scoreAML") || 0,
+                digital: localStorage.getItem("scoreDigital") || 0,
+                credit: localStorage.getItem("scoreCredit") || 0,
+                cybersecurity: localStorage.getItem("scoreCybersecurity") || 0
+            };
+
+            let comment = "Voici une évaluation des performances de votre entreprise:\n\n";
+            comment += "ESG: " + scores.esg + " / 100\n";
+            comment += "Anti-Blanchiment: " + scores.aml + " / 100\n";
+            comment += "Digitalisation: " + scores.digital + " / 100\n";
+            comment += "Crédit: " + scores.credit + " / 100\n";
+            comment += "Cybersécurité: " + scores.cybersecurity + " / 100\n";
+
+            return comment;
+        }
+
+        window.onload = loadScores;
     </script>
 
 </body>

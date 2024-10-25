@@ -139,8 +139,8 @@
             var scoreOutOfTen = (totalScore / 15) * 10;
             document.getElementById('result').innerHTML = 'Votre score est de : ' + scoreOutOfTen.toFixed(1) + ' / 10';
 
-            // Stocker le score dans localStorage
-            localStorage.setItem("score4", scoreOutOfTen.toFixed(1));
+            // Stocker le score dans localStorage avec la clé correcte pour la digitalisation
+            localStorage.setItem("scoreDigital4", scoreOutOfTen.toFixed(1));
 
             // Redirection vers la page d'accueil après 2 secondes
             setTimeout(function() {

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Évaluation Sociale - ESG</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-size: 16px;
+            display: block;
+            margin: 10px 0;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .submit-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #27ae60;
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Évaluation Sociale</h1>
+        <p>Veuillez répondre aux questions ci-dessous pour évaluer votre performance sociale</p>
+    </div>
+
+    <div class="container">
+        <form id="socialForm">
+            <!-- Question 1 -->
+            <label>1. Comment votre entreprise promeut-elle l'égalité entre les sexes au sein de ses équipes ?</label>
+            <input type="radio" name="q1" value="1"> Aucun effort <br>
+            <input type="radio" name="q1" value="2"> Efforts limités <br>
+            <input type="radio" name="q1" value="3"> Stratégie claire pour l'égalité des sexes <br>
+
+            <!-- Question 2 -->
+            <label>2. Votre entreprise applique-t-elle des politiques pour garantir la santé et le bien-être des employés ?</label>
+            <input type="radio" name="q2" value="1"> Pas de politique <br>
+            <input type="radio" name="q2" value="2"> Politiques de base <br>
+            <input type="radio" name="q2" value="3"> Politiques avancées avec suivi de la santé et bien-être <br>
+
+            <!-- Question 3 -->
+            <label>3. Comment votre entreprise soutient-elle l'éducation continue de ses employés ?</label>
+            <input type="radio" name="q3" value="1"> Aucun programme <br>
+            <input type="radio" name="q3" value="2"> Programmes limités <br>
+            <input type="radio" name="q3" value="3"> Programmes complets avec financement de la formation <br>
+
+            <!-- Question 4 -->
+            <label>4. Votre entreprise offre-t-elle des opportunités égales à tous les groupes sociaux, y compris les minorités ?</label>
+            <input type="radio" name="q4" value="1"> Aucune mesure <br>
+            <input type="radio" name="q4" value="2"> Certaines mesures <br>
+            <input type="radio" name="q4" value="3"> Politiques claires pour garantir l'égalité <br>
+
+            <!-- Question 5 -->
+            <label>5. Dans quelle mesure votre entreprise veille-t-elle à réduire les écarts salariaux ?</label>
+            <input type="radio" name="q5" value="1"> Pas de politique spécifique <br>
+            <input type="radio" name="q5" value="2"> Politique en cours d'élaboration <br>
+            <input type="radio" name="q5" value="3"> Politique bien établie avec suivi régulier <br>
+
+            <!-- Question 6 -->
+            <label>6. Comment votre entreprise contribue-t-elle à la protection des droits des travailleurs ?</label>
+            <input type="radio" name="q6" value="1"> Pas de contribution <br>
+            <input type="radio" name="q6" value="2"> Contribution limitée <br>
+            <input type="radio" name="q6" value="3"> Engagement actif dans la protection des droits des travailleurs <br>
+
+            <!-- Question 7 -->
+            <label>7. Votre entreprise soutient-elle des initiatives pour l'intégration des personnes en situation de handicap ?</label>
+            <input type="radio" name="q7" value="1"> Pas du tout <br>
+            <input type="radio" name="q7" value="2"> Quelques initiatives ponctuelles <br>
+            <input type="radio" name="q7" value="3"> Programme d'intégration bien établi <br>
+
+            <!-- Question 8 -->
+            <label>8. Votre entreprise s'engage-t-elle à améliorer les conditions de travail dans sa chaîne d'approvisionnement ?</label>
+            <input type="radio" name="q8" value="1"> Aucun engagement <br>
+            <input type="radio" name="q8" value="2"> Engagement limité <br>
+            <input type="radio" name="q8" value="3"> Engagement actif avec audits réguliers <br>
+
+            <!-- Question 9 -->
+            <label>9. Comment votre entreprise soutient-elle le développement des communautés locales ?</label>
+            <input type="radio" name="q9" value="1"> Pas de soutien <br>
+            <input type="radio" name="q9" value="2"> Soutien limité <br>
+            <input type="radio" name="q9" value="3"> Soutien actif avec des programmes durables <br>
+
+            <!-- Question 10 -->
+            <label>10. Comment votre entreprise gère-t-elle la diversité culturelle au sein de ses équipes ?</label>
+            <input type="radio" name="q10" value="1"> Aucune politique spécifique <br>
+            <input type="radio" name="q10" value="2"> Politique limitée <br>
+            <input type="radio" name="q10" value="3"> Politique établie avec suivi <br>
+
+            <!-- Question 11 -->
+            <label>11. Votre entreprise propose-t-elle des programmes de bien-être mental pour les employés ?</label>
+            <input type="radio" name="q11" value="1"> Aucun programme <br>
+            <input type="radio" name="q11" value="2"> Programmes limités <br>
+            <input type="radio" name="q11" value="3"> Programmes complets avec soutien continu <br>
+
+            <!-- Question 12 -->
+            <label>12. Comment votre entreprise évalue-t-elle l'impact social de ses activités ?</label>
+            <input type="radio" name="q12" value="1"> Aucun suivi <br>
+            <input type="radio" name="q12" value="2"> Suivi limité <br>
+            <input type="radio" name="q12" value="3"> Suivi actif avec indicateurs sociaux <br>
+
+            <!-- Question 13 -->
+            <label>13. Comment votre entreprise protège-t-elle les données personnelles de ses clients et employés ?</label>
+            <input type="radio" name="q13" value="1"> Pas de politique spécifique <br>
+            <input type="radio" name="q13" value="2"> Politique limitée <br>
+            <input type="radio" name="q13" value="3"> Politique avancée avec suivi régulier <br>
+
+            <!-- Question 14 -->
+            <label>14. Quelle est l'implication de votre entreprise dans la création d'emplois locaux ?</label>
+            <input type="radio" name="q14" value="1"> Aucun effort <br>
+            <input type="radio" name="q14" value="2"> Efforts limités <br>
+            <input type="radio" name="q14" value="3"> Efforts significatifs avec création active d'emplois <br>
+
+            <!-- Question 15 -->
+            <label>15. Votre entreprise soutient-elle activement la formation professionnelle des jeunes ?</label>
+            <input type="radio" name="q15" value="1"> Aucun soutien <br>
+            <input type="radio" name="q15" value="2"> Soutien limité <br>
+            <input type="radio" name="q15" value="3"> Soutien actif avec programmes de formation <br>
+
+            <!-- Question 16 -->
+            <label>16. Votre entreprise a-t-elle des politiques de non-discrimination en place ?</label>
+            <input type="radio" name="q16" value="1"> Pas de politique <br>
+            <input type="radio" name="q16" value="2"> Politique en cours de développement <br>
+            <input type="radio" name="q16" value="3"> Politique établie avec mesures de suivi <br>
+
+            <!-- Question 17 -->
+            <label>17. Comment votre entreprise s'assure-t-elle de conditions de travail sûres pour tous les employés ?</label>
+            <input type="radio" name="q17" value="1"> Aucun suivi <br>
+            <input type="radio" name="q17" value="2"> Suivi limité <br>
+            <input type="radio" name="q17" value="3"> Suivi complet avec audits de sécurité <br>
+
+            <!-- Question 18 -->
+            <label>18. Comment votre entreprise lutte-t-elle contre le travail des enfants dans sa chaîne d'approvisionnement ?</label>
+            <input type="radio" name="q18" value="1"> Aucune politique spécifique <br>
+            <input type="radio" name="q18" value="2"> Politique limitée <br>
+            <input type="radio" name="q18" value="3"> Politique stricte avec vérifications régulières <br>
+
+            <!-- Question 19 -->
+            <label>19. Votre entreprise propose-t-elle des congés payés pour les parents (maternité et paternité) ?</label>
+            <input type="radio" name="q19" value="1"> Aucun congé payé <br>
+            <input type="radio" name="q19" value="2"> Congés limités <br>
+            <input type="radio" name="q19" value="3"> Congés complets avec soutien supplémentaire <br>
+
+            <!-- Question 20 -->
+            <label>20. Votre entreprise encourage-t-elle le bénévolat des employés pour des causes sociales ?</label>
+            <input type="radio" name="q20" value="1"> Pas de soutien <br>
+            <input type="radio" name="q20" value="2"> Soutien limité <br>
+            <input type="radio" name="q20" value="3"> Soutien actif avec programmes dédiés <br>
+
+            <!-- Question 21 -->
+            <label>21. Comment votre entreprise soutient-elle les familles monoparentales parmi ses employés ?</label>
+            <input type="radio" name="q21" value="1"> Aucun soutien <br>
+            <input type="radio" name="q21" value="2"> Soutien limité <br>
+            <input type="radio" name="q21" value="3"> Soutien actif avec programmes adaptés <br>
+
+            <!-- Question 22 -->
+            <label>22. Votre entreprise a-t-elle des programmes pour soutenir l'inclusion des personnes LGBT+ ?</label>
+            <input type="radio" name="q22" value="1"> Aucun programme <br>
+            <input type="radio" name="q22" value="2"> Programmes limités <br>
+            <input type="radio" name="q22" value="3"> Programmes complets et inclusifs <br>
+
+            <!-- Question 23 -->
+            <label>23. Votre entreprise offre-t-elle une couverture médicale complète aux employés ?</label>
+            <input type="radio" name="q23" value="1"> Couverture minimale <br>
+            <input type="radio" name="q23" value="2"> Couverture partielle <br>
+            <input type="radio" name="q23" value="3"> Couverture complète <br>
+
+            <!-- Question 24 -->
+            <label>24. Comment votre entreprise promeut-elle la transparence en matière de diversité et d'inclusion ?</label>
+            <input type="radio" name="q24" value="1"> Pas de transparence <br>
+            <input type="radio" name="q24" value="2"> Transparence limitée <br>
+            <input type="radio" name="q24" value="3"> Transparence complète avec rapports réguliers <br>
+
+            <!-- Question 25 -->
+            <label>25. Quel niveau de partenariat votre entreprise développe-t-elle pour améliorer la cohésion sociale ?</label>
+            <input type="radio" name="q25" value="1"> Aucun partenariat <br>
+            <input type="radio" name="q25" value="2"> Partenariats limités <br>
+            <input type="radio" name="q25" value="3"> Partenariats forts avec résultats <br>
+
+            <!-- Submit button -->
+            <div class="btn-container">
+                <button type="button" class="submit-btn" onclick="calculateScore()">Calculer le score</button>
+            </div>
+
+            <!-- Result -->
+            <div class="result" id="result"></div>
+        </form>
+    </div>
+
+    <script>
+        function calculateScore() {
+            var totalScore = 0;
+            var form = document.forms['socialForm'];
+
+            // Add up the score for each question
+            for (var i = 1; i <= 25; i++) {
+                var question = form['q' + i];
+                for (var j = 0; j < question.length; j++) {
+                    if (question[j].checked) {
+                        totalScore += parseInt(question[j].value);
+                    }
+                }
+            }
+
+            // Display the result
+            var scoreOutOfHundred = (totalScore / 75) * 100; // Normalized on a scale of 100
+            document.getElementById('result').innerHTML = 'Votre score social est de : ' + scoreOutOfHundred.toFixed(2) + ' / 100';
+
+            // Store the score in localStorage
+            localStorage.setItem("scoreSocial", scoreOutOfHundred.toFixed(2));
+
+            // Redirect to ESG homepage after calculating the score
+            setTimeout(function() {
+                window.location.href = 'ESG.html';
+            }, 2000); // 2-second delay before redirecting
+        }
+    </script>
+
+</body>
+</html>

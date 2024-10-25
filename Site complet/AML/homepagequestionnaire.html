@@ -194,7 +194,7 @@
             document.getElementById("score6").textContent = (localStorage.getItem("score6") || "Pas encore calculé") + "/10";
         }
 
-        // Fonction pour calculer le score total et afficher le bouton de retour à l'accueil
+        // Fonction pour calculer le score total et enregistrer dans le localStorage pour la page d'accueil des calculateurs
         function calculateTotal() {
             const score1 = parseFloat(localStorage.getItem("score1")) || 0;
             const score2 = parseFloat(localStorage.getItem("score2")) || 0;
@@ -205,6 +205,9 @@
 
             const totalScore = score1 + score2 + score3 + score4 + score5 + score6;
             let message = "Votre score total est de : " + totalScore + " / 60.\n";
+
+            // Stocker le score total dans le localStorage sous la clé "scoreAML"
+            localStorage.setItem("scoreAML", totalScore);
 
             // Conclusion détaillée basée sur les scores individuels et les risques
             if (totalScore > 50) {
@@ -239,7 +242,7 @@
             // Afficher le bouton de retour à l'accueil
             document.getElementById('btnHome').style.display = 'block';
 
-            // Generate the bar chart without the title
+            // Générer le graphique sans titre
             const ctx = document.getElementById('myChart').getContext('2d');
             const myChart = new Chart(ctx, {
                 type: 'bar',

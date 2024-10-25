@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionnaire 3 - Sécurité des données</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .question {
+            margin-bottom: 20px;
+        }
+
+        .question h3 {
+            font-size: 16px;
+            color: #2c3e50;
+        }
+
+        .btn-submit {
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            display: block;
+            width: 100%;
+        }
+
+        .result {
+            font-size: 18px;
+            color: #2c3e50;
+            font-weight: bold;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Évaluation de la Sécurité - Sécurité des données</h1>
+        <p>Répondez aux questions ci-dessous pour évaluer la protection des données sensibles dans votre entreprise</p>
+    </div>
+
+    <div class="container">
+        <form id="quizForm">
+            <!-- Question 1 -->
+            <div class="question">
+                <h3>1. Les données sensibles sont-elles stockées de manière chiffrée, aussi bien au repos qu'en transit ?</h3>
+                <input type="radio" name="q1" value="3"> a) Oui, toutes les données sensibles sont chiffrées.<br>
+                <input type="radio" name="q1" value="2"> b) Partiellement, certaines données sont chiffrées.<br>
+                <input type="radio" name="q1" value="1"> c) Non, mais nous prévoyons de les chiffrer bientôt.<br>
+                <input type="radio" name="q1" value="0"> d) Non, les données ne sont pas chiffrées.<br>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question">
+                <h3>2. Disposez-vous d'une politique de sauvegarde régulière et testée pour les données critiques ?</h3>
+                <input type="radio" name="q2" value="3"> a) Oui, les sauvegardes sont régulières et testées.<br>
+                <input type="radio" name="q2" value="2"> b) Oui, mais elles ne sont pas testées régulièrement.<br>
+                <input type="radio" name="q2" value="1"> c) Non, mais nous travaillons à la mise en place d'une politique de sauvegarde.<br>
+                <input type="radio" name="q2" value="0"> d) Non, il n'y a pas de politique de sauvegarde.<br>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question">
+                <h3>3. Avez-vous des solutions de prévention contre la perte de données (DLP) en place pour empêcher la fuite d'informations sensibles ?</h3>
+                <input type="radio" name="q3" value="3"> a) Oui, un système DLP est en place.<br>
+                <input type="radio" name="q3" value="2"> b) Partiellement, pour certaines informations.<br>
+                <input type="radio" name="q3" value="1"> c) Non, mais nous envisageons d'en installer un.<br>
+                <input type="radio" name="q3" value="0"> d) Non, il n'y a pas de solution DLP.<br>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="question">
+                <h3>4. Des audits de sécurité sont-ils réalisés pour vérifier la protection des données sensibles ?</h3>
+                <input type="radio" name="q4" value="3"> a) Oui, des audits réguliers sont réalisés.<br>
+                <input type="radio" name="q4" value="2"> b) Oui, mais de manière ponctuelle.<br>
+                <input type="radio" name="q4" value="1"> c) Non, mais des audits sont prévus prochainement.<br>
+                <input type="radio" name="q4" value="0"> d) Non, pas d'audits réalisés.<br>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="question">
+                <h3>5. Disposez-vous d'un protocole pour détruire de manière sécurisée les données obsolètes ou non nécessaires ?</h3>
+                <input type="radio" name="q5" value="3"> a) Oui, des procédures strictes sont en place.<br>
+                <input type="radio" name="q5" value="2"> b) Oui, mais les procédures ne sont pas toujours respectées.<br>
+                <input type="radio" name="q5" value="1"> c) Non, mais nous prévoyons de les mettre en place.<br>
+                <input type="radio" name="q5" value="0"> d) Non, il n'y a pas de protocole de destruction de données.<br>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="question">
+                <h3>6. Est-ce que les accès aux données clients sont enregistrés et surveillés pour identifier les accès non autorisés ?</h3>
+                <input type="radio" name="q6" value="3"> a) Oui, tous les accès sont enregistrés et surveillés.<br>
+                <input type="radio" name="q6" value="2"> b) Oui, mais seuls certains accès critiques sont surveillés.<br>
+                <input type="radio" name="q6" value="1"> c) Non, mais nous envisageons de le faire.<br>
+                <input type="radio" name="q6" value="0"> d) Non, il n'y a pas de surveillance des accès.<br>
+            </div>
+
+            <!-- Bouton soumettre -->
+            <button type="button" class="btn-submit" onclick="calculateScore()">Soumettre</button>
+
+            <!-- Résultat -->
+            <div id="result" class="result"></div>
+        </form>
+    </div>
+
+    <script>
+        function calculateScore() {
+            let totalScore = 0;
+
+            // Récupérer toutes les réponses
+            const form = document.getElementById('quizForm');
+            const formData = new FormData(form);
+
+            // Additionner les valeurs des réponses
+            for (let value of formData.values()) {
+                totalScore += parseInt(value);
+            }
+
+            // Afficher le résultat
+            const resultDiv = document.getElementById('result');
+            resultDiv.textContent = "Votre score pour la sécurité des données est de : " + totalScore + " / 18";
+
+            // Stocker le score dans localStorage
+            localStorage.setItem("scoreDataSecurity", totalScore);
+
+            // Redirection automatique vers la page d'accueil après 2 secondes
+            setTimeout(function() {
+                window.location.href = "homepagesecurity.html"; // Redirection vers la page d'accueil
+            }, 2000);
+        }
+    </script>
+
+</body>
+</html>

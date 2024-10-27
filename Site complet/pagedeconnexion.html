@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+        .login-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 350px;
+            text-align: center;
+        }
+        .login-container h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        .btn {
+            background-color: #3498db;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        .google-btn {
+            background-color: #dd4b39;
+            margin-top: 20px;
+        }
+        .separator {
+            margin: 20px 0;
+            font-size: 14px;
+            color: #888;
+        }
+    </style>
+    
+    <!-- Inclure le script OAuth de Google -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>Connexion</h2>
+        
+        <!-- Formulaire de connexion classique -->
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Identifiant" required>
+            <input type="password" id="password" placeholder="Mot de passe" required>
+            <button type="button" class="btn" onclick="login()">Se connecter</button>
+        </form>
+        
+        <div class="separator">ou</div>
+
+        <!-- Connexion avec Google -->
+        <button class="btn google-btn" onclick="googleLogin()">Se connecter avec Google</button>
+        
+        <!-- Bouton pour inscription -->
+        <button class="btn" onclick="register()">Créer un compte</button>
+    </div>
+
+    <script>
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Exemple de vérification de connexion
+            if (username === "admin" && password === "admin123") {
+                alert("Connexion réussie !");
+                window.location.href = "homepagecalculateur.html";
+            } else {
+                alert("Identifiant ou mot de passe incorrect");
+            }
+        }
+
+        function register() {
+            alert("Fonction d'inscription à implémenter");
+        }
+
+        function googleLogin() {
+            google.accounts.id.initialize({
+                client_id: "225445746486-g2ig515kov0pc4skadla0qaum3fo3p24.apps.googleusercontent.com",
+                callback: handleCredentialResponse
+            });
+            google.accounts.id.prompt();
+        }
+
+        function handleCredentialResponse(response) {
+            console.log("ID Token : " + response.credential);
+            alert("Connexion réussie avec Google !");
+            window.location.href = "homepagecalculateur.html";
+        }
+    </script>
+
+</body>
+</html>

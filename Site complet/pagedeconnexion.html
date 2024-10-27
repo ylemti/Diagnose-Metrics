@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connexion</title>
+    <title>Connexion - Master Your Metrics</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -23,19 +23,15 @@
             max-width: 350px;
             text-align: center;
         }
-        .login-container h2 {
+        .login-container h1 {
             color: #333;
-            margin-bottom: 20px;
-            font-size: 24px;
+            font-size: 28px;
+            margin-bottom: 5px;
         }
-        input[type="text"], input[type="password"] {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-sizing: border-box;
-            font-size: 16px;
+        .login-container h2 {
+            color: #777;
+            font-size: 18px;
+            margin-bottom: 20px;
         }
         .btn {
             background-color: #3498db;
@@ -56,10 +52,12 @@
             background-color: #dd4b39;
             margin-top: 20px;
         }
-        .separator {
-            margin: 20px 0;
-            font-size: 14px;
-            color: #888;
+        .guest-btn {
+            background-color: #2ecc71;
+            margin-top: 10px;
+        }
+        .guest-btn:hover {
+            background-color: #27ae60;
         }
     </style>
     
@@ -69,42 +67,17 @@
 <body>
 
     <div class="login-container">
-        <h2>Connexion</h2>
-        
-        <!-- Formulaire de connexion classique -->
-        <form id="loginForm">
-            <input type="text" id="username" placeholder="Identifiant" required>
-            <input type="password" id="password" placeholder="Mot de passe" required>
-            <button type="button" class="btn" onclick="login()">Se connecter</button>
-        </form>
-        
-        <div class="separator">ou</div>
+        <h1>Master Your Metrics</h1>
+        <h2>Portail de Diagnostic - Accédez à vos Calculateurs</h2>
 
         <!-- Connexion avec Google -->
         <button class="btn google-btn" onclick="googleLogin()">Se connecter avec Google</button>
         
-        <!-- Bouton pour inscription -->
-        <button class="btn" onclick="register()">Créer un compte</button>
+        <!-- Connexion sans profil -->
+        <button class="btn guest-btn" onclick="guestLogin()">Connexion sans profil</button>
     </div>
 
     <script>
-        function login() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-
-            // Exemple de vérification de connexion
-            if (username === "admin" && password === "admin123") {
-                alert("Connexion réussie !");
-                window.location.href = "homepagecalculateur.html";
-            } else {
-                alert("Identifiant ou mot de passe incorrect");
-            }
-        }
-
-        function register() {
-            alert("Fonction d'inscription à implémenter");
-        }
-
         function googleLogin() {
             google.accounts.id.initialize({
                 client_id: "225445746486-g2ig515kov0pc4skadla0qaum3fo3p24.apps.googleusercontent.com",
@@ -116,6 +89,12 @@
         function handleCredentialResponse(response) {
             console.log("ID Token : " + response.credential);
             alert("Connexion réussie avec Google !");
+            window.location.href = "homepagecalculateur.html";
+        }
+
+        function guestLogin() {
+            // Connexion sans profil
+            alert("Connexion en tant qu'invité réussie !");
             window.location.href = "homepagecalculateur.html";
         }
     </script>

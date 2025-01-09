@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Création de Profil</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+        .signup-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        .signup-container h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        input[type="text"], input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        .btn {
+            background-color: #27ae60;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #1e8449;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="signup-container">
+        <h2>Créer un profil</h2>
+        <form id="signupForm">
+            <input type="text" id="username" placeholder="Nom d'utilisateur" required>
+            <input type="email" id="email" placeholder="Adresse e-mail" required>
+            <input type="password" id="password" placeholder="Mot de passe" required>
+            <input type="password" id="confirmPassword" placeholder="Confirmer le mot de passe" required>
+            <div class="error" id="error"></div>
+            <button type="button" class="btn" onclick="register()">S'inscrire</button>
+        </form>
+    </div>
+
+    <script>
+        function register() {
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const errorDiv = document.getElementById('error');
+
+            errorDiv.textContent = "";  // Réinitialise les erreurs
+
+            // Validation de base
+            if (password.length < 6) {
+                errorDiv.textContent = "Le mot de passe doit contenir au moins 6 caractères.";
+                return;
+            }
+            if (password !== confirmPassword) {
+                errorDiv.textContent = "Les mots de passe ne correspondent pas.";
+                return;
+            }
+
+            // Données d'inscription à envoyer au serveur (idéalement avec HTTPS pour la sécurité)
+            const userData = { username, email, password };
+            console.log("Envoi des données d'utilisateur :", userData);
+
+            alert("Inscription réussie ! Vous pouvez maintenant vous connecter.");
+            // Redirection vers la page de connexion après succès
+            window.location.href = "pagedeconnexion.html";
+        }
+    </script>
+
+</body>
+</html>
